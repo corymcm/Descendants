@@ -12,8 +12,20 @@
     <ClInclude Include="source\headers\main.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="source\headers\WindowManager.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\headers\stdafx.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\WindowManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\stdafx.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
