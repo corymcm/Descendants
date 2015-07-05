@@ -8,6 +8,9 @@
 	#undef main
 #endif 
 
+// TODO : Wrap this in a game object
+// global objects are ugly, same with the g_ prefix...
+WindowManger::WindowManger* g_windowManager;
 
 ///-------------------------------------------------
 /// Initialize main gameobject and windowmangers.
@@ -20,17 +23,15 @@ bool InitializeGameObject()
 		return false;
 	}
 
-	WindowManger::WindowManger* window = new WindowManger::WindowManger("Hello World!", 100, 100, 640, 480);
+	std::string dilion;
+	char* imagePath = SDL_GetBasePath();
 
-	SDL_Renderer* renderer = window->CreateRenderer();
-	if (renderer == nullptr)
-	{
-		LogError("Error: Failed to create renderer : ");
-		window->~WindowManger();
-		delete window;
-		return false;
-	}
+	dilion = imagePath;
+	dilion.append("..\\Descendants\\Textures\\Dilion.bmp");
+	SDL_free(imagePath);
 
+	g_windowManager = new WindowManger::WindowManger("You son of a bitch!", 100, 100, 640, 480);
+	g_windowManager->LoadTexture(dilion.c_str());
 
 	return true;
 }
@@ -40,15 +41,43 @@ bool InitializeGameObject()
 ///-------------------------------------------------
 void UnInitializeGameObject()
 {
+	g_windowManager->~WindowManger();
+	delete g_windowManager;
+
 	SDL_Quit();
 }
 
+///-------------------------------------------------
+/// Basic game loop logic for events and rendering.
+///-------------------------------------------------
+void PollEvents()
+{
+	SDL_Event e;
+	bool quit = false;
+	while (!quit)
+	{
+		while (SDL_PollEvent(&e))
+		{
+			if (e.type == SDL_QUIT)
+			{
+				quit = true;
+			}
+			if (e.type == SDL_KEYDOWN)
+			{
+				quit = true;
+			}
+		}
+
+		g_windowManager->Update();
+	}
+}
 
 int main(int argc, wchar_t *argv[])
 {
 	if (!InitializeGameObject())
 		return 1;
 
+	PollEvents();
 	UnInitializeGameObject();
 
 	return 0;
