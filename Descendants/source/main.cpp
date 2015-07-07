@@ -62,7 +62,7 @@ void PollEvents()
 			{
 				quit = true;
 			}
-			if (e.type == SDL_KEYDOWN)
+			if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE)
 			{
 				quit = true;
 			}
