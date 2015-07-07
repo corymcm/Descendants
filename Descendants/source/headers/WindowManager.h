@@ -4,6 +4,7 @@
 #define WINDOWMANAGER_H
 
 #include <vector>
+#include "GameObject.h"
 
 namespace WindowManger
 {
@@ -12,7 +13,7 @@ namespace WindowManger
 	private:
 		SDL_Window* _window;
 		SDL_Renderer* _renderer;
-		std::vector<SDL_Texture*> Textures;
+		std::vector<GameObject::GameObject*> _objects;
 
 		SDL_Renderer* CreateRenderer();
 		SDL_Surface* LoadBitmap(const char* path);
@@ -22,7 +23,8 @@ namespace WindowManger
 		~WindowManger();
 
 		void Update();
-		bool LoadTexture(const char* path);
+		SDL_Texture* LoadTexture(const char* path);
+		void AddGameObject(GameObject::GameObject* gameObjects);
 	};
 }
 #endif // WINDOWMANAGER_H

@@ -18,6 +18,8 @@ WindowManger::WindowManger::~WindowManger()
 		SDL_DestroyWindow(_window);
 	if (_window != nullptr)
 		SDL_DestroyRenderer(_renderer);
+
+	while (!_objects.empty()) delete _objects.back(), _objects.pop_back();
 }
 
 SDL_Renderer* WindowManger::WindowManger::CreateRenderer()
@@ -31,9 +33,10 @@ void WindowManger::WindowManger::Update()
 {
 	SDL_RenderClear(_renderer);
 
-	for (auto texture : Textures)
+	for (auto object : _objects)
 	{
-		SDL_RenderCopy(_renderer, texture, NULL, NULL);
+		object->Update();
+		object->Render(_renderer);
 	}
 
 	SDL_RenderPresent(_renderer);
@@ -53,7 +56,7 @@ SDL_Surface* WindowManger::WindowManger::LoadBitmap(const char* path)
 	return bmp;
 }
 
-bool WindowManger::WindowManger::LoadTexture(const char* path)
+SDL_Texture* WindowManger::WindowManger::LoadTexture(const char* path)
 {
 	SDL_Surface* bmp = LoadBitmap(path);
 
@@ -65,11 +68,14 @@ bool WindowManger::WindowManger::LoadTexture(const char* path)
 		SDL_DestroyWindow(_window);
 		LogError("SDL_CreateTextureFromSurface Error: ");
 		SDL_Quit();
-		return false;
+		return nullptr;
 	}
+	
+	return tex;
+}
 
-	Textures.push_back(tex);
-
-	return true;
+void WindowManger::WindowManger::AddGameObject(GameObject::GameObject* gameObject)
+{
+	_objects.push_back(gameObject);
 }
 

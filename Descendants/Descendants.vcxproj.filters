@@ -18,6 +18,15 @@
     <ClInclude Include="source\headers\stdafx.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="source\headers\GameObject.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\headers\Pawn.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\headers\Player.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp" />
@@ -25,6 +34,15 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="source\stdafx.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Pawn.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Player.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GameObject.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

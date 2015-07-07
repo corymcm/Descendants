@@ -1,12 +1,9 @@
 #include "stdafx.h"
+
 #include "main.h"
 #include "WindowManager.h"
+#include "GameObject.h"
 
-// Fucking linking errors from sdl, main is defined as SDL_Main
-// http://stackoverflow.com/questions/24620143/error-lnk2019-unresolved-external-symbol-main-referenced-in-function-tmainc
-#ifdef main
-	#undef main
-#endif 
 
 // TODO : Wrap this in a game object
 // global objects are ugly, same with the g_ prefix...
@@ -31,7 +28,11 @@ bool InitializeGameObject()
 	SDL_free(imagePath);
 
 	g_windowManager = new WindowManger::WindowManger("You son of a bitch!", 100, 100, 640, 480);
-	g_windowManager->LoadTexture(dilion.c_str());
+
+	SDL_Texture* background = g_windowManager->LoadTexture(dilion.c_str());
+
+	GameObject::GameObject* Background = new GameObject::GameObject(background, NULL);
+	g_windowManager->AddGameObject(Background);
 
 	return true;
 }
@@ -41,7 +42,6 @@ bool InitializeGameObject()
 ///-------------------------------------------------
 void UnInitializeGameObject()
 {
-	g_windowManager->~WindowManger();
 	delete g_windowManager;
 
 	SDL_Quit();
@@ -72,7 +72,7 @@ void PollEvents()
 	}
 }
 
-int main(int argc, wchar_t *argv[])
+int main(int argc, char **argv)
 {
 	if (!InitializeGameObject())
 		return 1;
