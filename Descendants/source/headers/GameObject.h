@@ -7,7 +7,7 @@ namespace GameObject
 {
 	class GameObject
 	{
-	private:
+	protected:
 		SDL_Texture* _texture;
 		SDL_Rect* _position;
 
@@ -16,7 +16,7 @@ namespace GameObject
 		GameObject(SDL_Texture* texture, SDL_Rect* position);
 		virtual ~GameObject();
 
-		virtual void Update();
+		virtual void Update(SDL_Event* e);
 		virtual void Render(SDL_Renderer* renderer);
 	};
 }

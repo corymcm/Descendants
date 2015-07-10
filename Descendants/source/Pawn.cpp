@@ -13,6 +13,12 @@ GameObject::Pawn::~Pawn()
 	delete _destination;
 }
 
-void GameObject::Pawn::Update()
+void GameObject::Pawn::Update(SDL_Event* e)
 {
+
+}
+
+void GameObject::Pawn::Render(SDL_Renderer * renderer)
+{
+	SDL_RenderCopy(renderer, _texture, _position, _destination);
 }

@@ -21,15 +21,14 @@ namespace WindowManger
 		SDL_Renderer* CreateRenderer();
 		SDL_Surface* LoadBitmap(const char* path);
 
-
-
 	public:
 		WindowManger(char* title, int posx, int posy, int width, int height);
 		~WindowManger();
 
 		int GetFPS();
 		void SetFPS(const int fps);
-		void Update();
+		void Update(SDL_Event* e);
+		void Render();
 		SDL_Texture* LoadTexture(const char* path);
 		void AddGameObject(GameObject::GameObject* gameObjects);
 	};

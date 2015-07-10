@@ -25,7 +25,7 @@ GameObject::GameObject::~GameObject()
 	delete _position;
 }
 
-void GameObject::GameObject::Update()
+void GameObject::GameObject::Update(SDL_Event* e)
 {
 
 }
