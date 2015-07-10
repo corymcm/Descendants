@@ -17,20 +17,22 @@ namespace WindowManger
 		SDL_Renderer* _renderer;
 		std::vector<GameObject::GameObject*> _objects;
 		
-		int GetMinimumFrameTime();
 		SDL_Renderer* CreateRenderer();
 		SDL_Surface* LoadBitmap(const char* path);
+
+		inline int GetMinimumFrameTime() { return 1000 / _fps; }
 
 	public:
 		WindowManger(char* title, int posx, int posy, int width, int height);
 		~WindowManger();
 
-		int GetFPS();
-		void SetFPS(const int fps);
 		void Update(SDL_Event* e);
 		void Render();
 		SDL_Texture* LoadTexture(const char* path);
 		void AddGameObject(GameObject::GameObject* gameObjects);
+
+		inline int GetFPS(){ return _fps; }
+		inline void SetFPS(const int fps) { _fps = fps; }
 	};
 }
 #endif // WINDOWMANAGER_H

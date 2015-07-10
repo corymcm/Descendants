@@ -93,17 +93,3 @@ void WindowManger::WindowManger::AddGameObject(GameObject::GameObject* gameObjec
 	_objects.push_back(gameObject);
 }
 
-int WindowManger::WindowManger::GetMinimumFrameTime()
-{
-	return 1000 / _fps;
-}
-
-int WindowManger::WindowManger::GetFPS()
-{
-	return _fps;
-}
-
-void WindowManger::WindowManger::SetFPS(const int fps)
-{
-	_fps = fps;
-}
