@@ -26,7 +26,7 @@ bool InitializeGameObject()
 	char* imagePath = SDL_GetBasePath();
 
 	TexturePath = imagePath;
-	TexturePath.append("..\\Descendants\\Textures\\");
+	TexturePath.append("..\\..\\..\\Descendants\\Textures\\");
 	SDL_free(imagePath);
 
 	g_windowManager = new WindowManger::WindowManger("You son of a bitch!", 100, 100, 640, 480);

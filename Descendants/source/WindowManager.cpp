@@ -15,12 +15,7 @@ WindowManger::WindowManger::WindowManger(char* title, int posx, int posy, int wi
 
 WindowManger::WindowManger::~WindowManger()
 {
-	if (_window != nullptr)
-		SDL_DestroyWindow(_window);
-	if (_window != nullptr)
-		SDL_DestroyRenderer(_renderer);
-
-	while (!_objects.empty()) delete _objects.back(), _objects.pop_back();
+	CleanupWindowManger();
 }
 
 SDL_Renderer* WindowManger::WindowManger::CreateRenderer()
@@ -61,10 +56,7 @@ SDL_Surface* WindowManger::WindowManger::LoadBitmap(const char* path)
 	SDL_Surface* bmp = SDL_LoadBMP(path);
 	if (bmp == nullptr)
 	{
-		SDL_DestroyRenderer(_renderer);
-		SDL_DestroyWindow(_window);
-		LogError("SDL_LoadBMP Error: ");
-		SDL_Quit();
+		HandleError("SDL_LoadBMP Error: ");
 		return nullptr;
 	}
 	return bmp;
@@ -78,10 +70,7 @@ SDL_Texture* WindowManger::WindowManger::LoadTexture(const char* path)
 	SDL_FreeSurface(bmp);
 	if (tex == nullptr)
 	{
-		SDL_DestroyRenderer(_renderer);
-		SDL_DestroyWindow(_window);
-		LogError("SDL_CreateTextureFromSurface Error: ");
-		SDL_Quit();
+		HandleError("SDL_CreateTextureFromSurface Error: ");
 		return nullptr;
 	}
 	
@@ -91,5 +80,22 @@ SDL_Texture* WindowManger::WindowManger::LoadTexture(const char* path)
 void WindowManger::WindowManger::AddGameObject(GameObject::GameObject* gameObject)
 {
 	_objects.push_back(gameObject);
+}
+
+void WindowManger::WindowManger::CleanupWindowManger()
+{
+	if (_window != nullptr)
+		SDL_DestroyWindow(_window);
+	if (_window != nullptr)
+		SDL_DestroyRenderer(_renderer);
+
+	while (!_objects.empty()) delete _objects.back(), _objects.pop_back();
+}
+
+void WindowManger::WindowManger::HandleError(const char* message)
+{
+	CleanupWindowManger();
+	LogError(message);
+	SDL_Quit();
 }
 

@@ -19,6 +19,8 @@ namespace WindowManger
 		
 		SDL_Renderer* CreateRenderer();
 		SDL_Surface* LoadBitmap(const char* path);
+		void CleanupWindowManger();
+		void HandleError(const char* message);
 
 		inline int GetMinimumFrameTime() { return 1000 / _fps; }
 
