@@ -1,7 +1,7 @@
 Bin/
 Temp/
 ipch/
-/*.sdf
-/*.opensdf
-/*.v12.suo
-/*.vcxproj.user 
+*.sdf
+*.opensdf
+*.v12.suo
+*.vcxproj.user 
