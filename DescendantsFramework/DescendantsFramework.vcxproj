@@ -19,31 +19,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D8DE256E-3578-45E0-AEE8-2426720B54F1}</ProjectGuid>
-    <RootNamespace>Descendants</RootNamespace>
+    <ProjectGuid>{E6737DC3-064F-4AD1-B17F-2D784B831EA6}</ProjectGuid>
+    <RootNamespace>DescendantsFramework</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -92,13 +92,9 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib; SDL2Main.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>SDL2.lib; SDL2Main.lib</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -111,13 +107,9 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib; SDL2Main.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>SDL2.lib; SDL2Main.lib</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -134,13 +126,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2.lib; SDL2Main.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>SDL2.lib; SDL2Main.lib</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -157,20 +145,17 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2.lib; SDL2Main.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>SDL2.lib; SDL2Main.lib</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="source\GameObject.cpp" />
-    <ClCompile Include="source\main.cpp">
+    <ClCompile Include="source\GameObject.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="source\Pawn.cpp" />
@@ -178,18 +163,17 @@
     <ClCompile Include="source\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="source\WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\headers\GameObject.h" />
-    <ClInclude Include="source\headers\main.h" />
     <ClInclude Include="source\headers\Pawn.h" />
     <ClInclude Include="source\headers\Player.h" />
     <ClInclude Include="source\headers\stdafx.h" />
-    <ClInclude Include="source\headers\WindowManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -26,7 +26,7 @@ bool InitializeGameObject()
 	char* imagePath = SDL_GetBasePath();
 
 	TexturePath = imagePath;
-	TexturePath.append("..\\..\\..\\Descendants\\Textures\\");
+	TexturePath.append("..\\..\\..\\Data\\Textures\\");
 	SDL_free(imagePath);
 
 	g_windowManager = new WindowManger::WindowManger("You son of a bitch!", 100, 100, 640, 480);
@@ -84,6 +84,8 @@ void PollEvents()
 
 int main(int argc, char **argv)
 {
+	DESCENDANT_UNUSED(argc);
+	DESCENDANT_UNUSED(argv);
 	if (!InitializeGameObject())
 		return 1;
 

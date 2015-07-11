@@ -34,3 +34,4 @@ void GameObject::GameObject::Render(SDL_Renderer* renderer)
 {
 	SDL_RenderCopy(renderer, _texture, _position, NULL);
 }
+

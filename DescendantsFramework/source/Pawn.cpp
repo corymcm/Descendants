@@ -22,3 +22,4 @@ void GameObject::Pawn::Render(SDL_Renderer * renderer)
 {
 	SDL_RenderCopy(renderer, _texture, _position, _destination);
 }
+
