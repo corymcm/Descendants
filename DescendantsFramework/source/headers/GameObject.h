@@ -5,7 +5,7 @@
 
 namespace GameObject
 {
-	class GameObject
+	class DESCENDANT_EXPORT GameObject
 	{
 	protected:
 		SDL_Texture* _texture;

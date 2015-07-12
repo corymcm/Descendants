@@ -23,3 +23,9 @@
 #else
 	#define ASSERT(x) if(x == nullptr) LogErrorAdditional("Assert Error: ", #x); 
 #endif
+
+#ifdef DESCENDANT_DLL
+#define DESCENDANT_EXPORT __declspec(dllexport)
+#else
+#define DESCENDANT_EXPORT __declspec(dllimport)
+#endif

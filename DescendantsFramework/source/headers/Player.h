@@ -7,7 +7,7 @@
 
 namespace GameObject
 {
-	class Player : public GameObject
+	class DESCENDANT_EXPORT Player : public GameObject
 	{
 	private:
 		SDL_Rect* _destination;
