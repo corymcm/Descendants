@@ -1,6 +1,4 @@
-
 #include <iostream>
-
 #include <SDL.h>
 
 #ifdef _MSC_VER

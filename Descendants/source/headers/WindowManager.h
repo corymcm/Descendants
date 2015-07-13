@@ -3,6 +3,7 @@
 #ifndef WINDOWMANAGER_H
 #define WINDOWMANAGER_H
 
+#include <SDL.h>
 #include <vector>
 #include "GameObject.h"
 

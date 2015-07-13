@@ -15,6 +15,12 @@
     <ClInclude Include="source\headers\Pawn.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="source\headers\World.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\headers\WorldManager.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
     <ClInclude Include="source\headers\Player.h">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -27,6 +33,12 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="source\Pawn.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\World.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorldManager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="source\Player.cpp">
