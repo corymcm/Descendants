@@ -51,32 +51,6 @@ void WindowManger::WindowManger::Render()
 		SDL_Delay(minFrameTime - (SDL_GetTicks() - frametime));
 }
 
-SDL_Surface* WindowManger::WindowManger::LoadBitmap(const char* path)
-{
-	SDL_Surface* bmp = SDL_LoadBMP(path);
-	if (bmp == nullptr)
-	{
-		HandleError("SDL_LoadBMP Error: ");
-		return nullptr;
-	}
-	return bmp;
-}
-
-SDL_Texture* WindowManger::WindowManger::LoadTexture(const char* path)
-{
-	SDL_Surface* bmp = LoadBitmap(path);
-
-	SDL_Texture* tex = SDL_CreateTextureFromSurface(_renderer, bmp);
-	SDL_FreeSurface(bmp);
-	if (tex == nullptr)
-	{
-		HandleError("SDL_CreateTextureFromSurface Error: ");
-		return nullptr;
-	}
-	
-	return tex;
-}
-
 void WindowManger::WindowManger::AddGameObject(GameObject::GameObject* gameObject)
 {
 	_objects.push_back(gameObject);

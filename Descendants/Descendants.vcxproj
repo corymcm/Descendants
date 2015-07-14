@@ -86,15 +86,16 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;$(ProjectDir)..\External\Boost\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <TreatWarningAsError>true</TreatWarningAsError>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4512</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib; SDL2Main.lib; DescendantsFramework.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;$(ProjectDir)..\External\Boost\$(Platform)\</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
@@ -106,15 +107,16 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;$(ProjectDir)..\External\Boost\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <TreatWarningAsError>true</TreatWarningAsError>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4512</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib; SDL2Main.lib; DescendantsFramework.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;$(ProjectDir)..\External\Boost\$(Platform)\</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
@@ -128,17 +130,18 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;$(ProjectDir)..\External\Boost\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <TreatWarningAsError>true</TreatWarningAsError>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4512</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>SDL2.lib; SDL2Main.lib; DescendantsFramework.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;$(ProjectDir)..\External\Boost\$(Platform)\</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
@@ -152,17 +155,18 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;$(ProjectDir)..\External\Boost\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <TreatWarningAsError>true</TreatWarningAsError>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4512</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>SDL2.lib; SDL2Main.lib; DescendantsFramework.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;$(ProjectDir)..\External\Boost\$(Platform)\</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>

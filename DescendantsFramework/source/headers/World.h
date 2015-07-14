@@ -4,7 +4,6 @@
 #define WORLD_H
 
 #include <vector>
-#include <fstream>
 
 #include "GameObject.h"
 
@@ -24,6 +23,16 @@ namespace World
 		World();
 		inline void SetName(std::string* name) { _name = name; }
 		void LoadWorld();
+
+		template<class Archive>
+		void serialize(Archive & ar, const unsigned int version)
+		{
+			ar & _name;
+			for (auto object : _objects)
+			{
+				ar & object;
+			}
+		}
 
 
 	public:

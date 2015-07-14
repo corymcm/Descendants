@@ -1,16 +1,26 @@
 #include "stdafx.h"
 #include "Pawn.h"
 
-GameObject::Pawn::Pawn(SDL_Texture* texture, SDL_Rect* position, SDL_Rect* destination)
-	: GameObject(texture, position),
-	_destination(destination)
+GameObject::Pawn::Pawn(std::string texturePath, SDL_Renderer* renderer, SDL_Rect* position, SDL_Rect* destination)
+	: GameObject(texturePath, renderer, position)
 {
-
+	if (destination != nullptr)
+	{
+		_dest_x = destination->x;
+		_dest_y = destination->y;
+		_dest_w = destination->w;
+		_dest_h = destination->h;
+	}
 }
+
+GameObject::Pawn::Pawn()
+	: GameObject()
+{
+}
+
 
 GameObject::Pawn::~Pawn()
 {
-	delete _destination;
 }
 
 void GameObject::Pawn::Update(SDL_Event* e)
@@ -18,8 +28,11 @@ void GameObject::Pawn::Update(SDL_Event* e)
 	DESCENDANT_UNUSED(e);
 }
 
-void GameObject::Pawn::Render(SDL_Renderer * renderer)
+void GameObject::Pawn::Render(SDL_Renderer* renderer)
 {
-	SDL_RenderCopy(renderer, _texture, _position, _destination);
+	if (_requiresLoad)
+		_texture = LoadTexture(_texturePath, renderer);
+
+	SDL_RenderCopy(renderer, _texture, GetPosition(), GetDestination());
 }
 

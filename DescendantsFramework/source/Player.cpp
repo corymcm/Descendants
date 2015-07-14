@@ -1,16 +1,25 @@
 #include "stdafx.h"
 #include "Player.h"
 
-GameObject::Player::Player(SDL_Texture* texture, SDL_Rect* position, SDL_Rect* destination)
-	: GameObject(texture, position),
-	_destination(destination)
+GameObject::Player::Player(std::string texturePath, SDL_Renderer* renderer, SDL_Rect* position, SDL_Rect* destination)
+	: GameObject(texturePath, renderer, position)
 {
+	if (destination != nullptr)
+	{
+		_dest_x = destination->x;
+		_dest_y = destination->y;
+		_dest_w = destination->w;
+		_dest_h = destination->h;
+	}
+}
 
+GameObject::Player::Player()
+	:GameObject()
+{
 }
 
 GameObject::Player::~Player()
 {
-	delete _destination;
 }
 
 void GameObject::Player::Update(SDL_Event* e)
@@ -20,16 +29,16 @@ void GameObject::Player::Update(SDL_Event* e)
 		switch (e->key.keysym.sym)
 		{
 			case SDLK_w:
-				_destination->y -= 1;
+				_dest_y -= 1;
 				break;
 			case SDLK_s:
-				_destination->y += 1;
+				_dest_y += 1;
 				break;
 			case SDLK_a:
-				_destination->x -= 1;
+				_dest_x -= 1;
 				break;
 			case SDLK_d:
-				_destination->x += 1;
+				_dest_x += 1;
 				break;
 			default:
 				break;
@@ -37,7 +46,10 @@ void GameObject::Player::Update(SDL_Event* e)
 	}
 }
 
-void GameObject::Player::Render(SDL_Renderer * renderer)
+void GameObject::Player::Render(SDL_Renderer* renderer)
 {
-	SDL_RenderCopy(renderer, _texture, _position, _destination);
+	if (_requiresLoad)
+		_texture = LoadTexture(_texturePath, renderer);
+
+	SDL_RenderCopy(renderer, _texture, GetPosition(), GetDestination());
 }

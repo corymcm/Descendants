@@ -19,7 +19,6 @@ namespace WindowManger
 		std::vector<GameObject::GameObject*> _objects;
 		
 		SDL_Renderer* CreateRenderer();
-		SDL_Surface* LoadBitmap(const char* path);
 		void CleanupWindowManger();
 		void HandleError(const char* message);
 
@@ -31,9 +30,9 @@ namespace WindowManger
 
 		void Update(SDL_Event* e);
 		void Render();
-		SDL_Texture* LoadTexture(const char* path);
 		void AddGameObject(GameObject::GameObject* gameObjects);
 
+		inline SDL_Renderer* GetRenderer() { return _renderer; }
 		inline int GetFPS(){ return _fps; }
 		inline void SetFPS(const int fps) { _fps = fps; }
 	};
