@@ -1,33 +1,28 @@
 #include "stdafx.h"
 #include "GameObject.h"
 
-GameObject::GameObject::GameObject(std::string texturePath, SDL_Renderer* renderer, int posx, int posy, int width, int height)
-	:_texture(nullptr)
-{
-	pos_x = posx;
-	pos_y = posy;
-	pos_w = width;
-	pos_h = height;
-
-	_texture = LoadTexture(texturePath, renderer);
-	_texturePath = texturePath;
-	_requiresLoad = false;
-}
-
 GameObject::GameObject::GameObject()
 	:_texture(nullptr)
 {
 }
 
-GameObject::GameObject::GameObject(std::string texturePath, SDL_Renderer* renderer, SDL_Rect* position)
+GameObject::GameObject::GameObject(std::string texturePath, SDL_Renderer* renderer, SDL_Rect* source, SDL_Rect* destination)
 	:_texture(nullptr)
 {
-	if (position != nullptr)
+	if (source != nullptr)
 	{
-		pos_x = position->x;
-		pos_y = position->y;
-		pos_w = position->w;
-		pos_h = position->h;
+		src_x = source->x;
+		src_y = source->y;
+		src_w = source->w;
+		src_h = source->h;
+	}
+
+	if (destination != nullptr)
+	{
+		dest_x = destination->x;
+		dest_y = destination->y;
+		dest_w = destination->w;
+		dest_h = destination->h;
 	}
 
 	_texture = LoadTexture(texturePath, renderer);
@@ -50,7 +45,7 @@ void GameObject::GameObject::Render(SDL_Renderer* renderer)
 	if (_requiresLoad)
 		_texture = LoadTexture(_texturePath, renderer);
 
-	SDL_RenderCopy(renderer, _texture, GetPosition(), NULL);
+	SDL_RenderCopy(renderer, _texture, GetPosition(), GetDestination());
 }
 
 SDL_Surface* GameObject::GameObject::LoadBitmap(const char* path)

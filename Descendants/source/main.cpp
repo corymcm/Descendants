@@ -33,7 +33,7 @@ bool InitializeGameObject()
 	SDL_Rect* dilion_position = new SDL_Rect{ 200, 200, 64, 64 };
 	SDL_Rect* dutch_position = new SDL_Rect{ 50, 200, 64, 64 };
 
-	GameObject::GameObject* Background = new GameObject::GameObject(std::string(TexturePath).append("background.bmp"), g_windowManager->GetRenderer(), NULL);
+	GameObject::GameObject* Background = new GameObject::GameObject(std::string(TexturePath).append("background.bmp"), g_windowManager->GetRenderer(), NULL, NULL);
 	GameObject::GameObject* dilionPawn = new GameObject::Pawn(std::string(TexturePath).append("dilion.bmp"), g_windowManager->GetRenderer(), NULL, dilion_position);
 	GameObject::GameObject* dutchPlayer = new GameObject::Player(std::string(TexturePath).append("dutch.bmp"), g_windowManager->GetRenderer(), NULL, dutch_position);
 
