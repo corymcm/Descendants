@@ -10,38 +10,39 @@
 // include headers that implement a archive in simple text format
 #include <Boost/archive/text_oarchive.hpp>
 #include <Boost/archive/text_iarchive.hpp>
+#include <boost/serialization/vector.hpp>
 
 namespace World
 {
-	class DESCENDANT_EXPORT World
+	class World
 	{
 		friend class boost::serialization::access;
 	private:
-		std::vector<GameObject::GameObject*>* _objects;
-		std::string* _name;
+		std::vector<GameObject::GameObject*> _objects;
+		std::string _name;
 
 		World();
-		inline void SetName(std::string* name) { _name = name; }
-		void LoadWorld();
-
+		inline void SetName(std::string name) { _name = name; }
+		
 		template<class Archive>
-		void serialize(Archive & ar, const unsigned int version)
+		inline void serialize(Archive & ar, const unsigned int version)
 		{
+			DESCENDANT_UNUSED(version);
+
 			ar & _name;
-			for (auto object : _objects)
-			{
-				ar & object;
-			}
+			ar & _objects;
 		}
 
-
 	public:
-		World(std::string fileName);
-		~World();
+		DESCENDANT_EXPORT World(std::string fileName);
+		DESCENDANT_EXPORT ~World();
 
-		inline std::string* GetName() { return _name; }
+		DESCENDANT_EXPORT inline std::string GetName() { return _name; }
 
-		void Update(SDL_Event* e);
+		DESCENDANT_EXPORT void Update(SDL_Event* e);
+		DESCENDANT_EXPORT void Render(SDL_Renderer* renderer);
+		DESCENDANT_EXPORT void AddObject(GameObject::GameObject* object);
+		DESCENDANT_EXPORT void RemoveObject(GameObject::GameObject* object);
 	};
 }
 

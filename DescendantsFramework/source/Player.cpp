@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "Player.h"
 
+#include <boost/serialization/export.hpp>
+BOOST_CLASS_EXPORT_GUID(GameObject::Player, "Player");
+
 GameObject::Player::Player(std::string texturePath, SDL_Renderer* renderer, SDL_Rect* position, SDL_Rect* destination)
 	: GameObject(texturePath, renderer, position, destination)
 {

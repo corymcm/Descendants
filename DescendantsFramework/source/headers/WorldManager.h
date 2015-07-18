@@ -8,17 +8,23 @@
 
 namespace WorldManager
 {
-	class DESCENDANT_EXPORT WorldManager
+	class WorldManager
 	{
 	private:
-		std::vector<World::World>* _Worlds;
-
+		World::World* _curretWorld;
+		std::string _worldResourceFolder;
 
 	public:
-		WorldManager(SDL_Texture* texture, SDL_Rect* position, SDL_Rect* destination);
-		~WorldManager();
+		DESCENDANT_EXPORT inline World::World* GetCurrentWorld() { return _curretWorld; }
 
-		void UpdateWorld(SDL_Event* e);
+		DESCENDANT_EXPORT WorldManager(std::string resourcePath);
+		DESCENDANT_EXPORT WorldManager(std::string resourcePath, World::World* world);
+		DESCENDANT_EXPORT ~WorldManager();
+
+		DESCENDANT_EXPORT void UpdateWorld(SDL_Event* e);
+		DESCENDANT_EXPORT void RenderWorld(SDL_Renderer* renderer);
+		DESCENDANT_EXPORT void LoadWorld(std::string worldName);
+		DESCENDANT_EXPORT void SaveWorld();
 	};
 }
 

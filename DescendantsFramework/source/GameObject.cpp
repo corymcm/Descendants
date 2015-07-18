@@ -4,6 +4,7 @@
 GameObject::GameObject::GameObject()
 	:_texture(nullptr)
 {
+
 }
 
 GameObject::GameObject::GameObject(std::string texturePath, SDL_Renderer* renderer, SDL_Rect* source, SDL_Rect* destination)
@@ -43,8 +44,10 @@ void GameObject::GameObject::Update(SDL_Event* e)
 void GameObject::GameObject::Render(SDL_Renderer* renderer)
 {
 	if (_requiresLoad)
+	{
 		_texture = LoadTexture(_texturePath, renderer);
-
+		_requiresLoad = false;
+	}
 	SDL_RenderCopy(renderer, _texture, GetPosition(), GetDestination());
 }
 

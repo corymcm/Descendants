@@ -5,15 +5,14 @@
 #include "GameObject.h"
 #include "Pawn.h"
 #include "Player.h"
+#include "World.h"
+#include "WorldManager.h"
 #include <fstream>
 
 // TODO : Wrap this in a game object
 // global objects are ugly, same with the g_ prefix...
 WindowManger::WindowManger* g_windowManager;
-
-#include <boost/serialization/export.hpp>
-BOOST_CLASS_EXPORT_GUID(GameObject::Player, "Player");
-BOOST_CLASS_EXPORT_GUID(GameObject::Pawn, "Pawn");
+WorldManager::WorldManager* g_worldManager;
 
 ///-------------------------------------------------
 /// Initialize main gameobject and windowmangers.
@@ -27,15 +26,29 @@ bool InitializeGameObject()
 	}
 
 	std::string TexturePath = SDL_GetBasePath();
+	std::string WorldPath = SDL_GetBasePath();
+	WorldPath.append("..\\..\\..\\Data\\Worlds\\");
 	TexturePath.append("..\\..\\..\\Data\\Textures\\");
 
 	g_windowManager = new WindowManger::WindowManger("You son of a bitch!", 100, 100, 640, 480);
-	SDL_Rect* dilion_position = new SDL_Rect{ 200, 200, 64, 64 };
-	SDL_Rect* dutch_position = new SDL_Rect{ 50, 200, 64, 64 };
 
-	GameObject::GameObject* Background = new GameObject::GameObject(std::string(TexturePath).append("background.bmp"), g_windowManager->GetRenderer(), NULL, NULL);
-	GameObject::GameObject* dilionPawn = new GameObject::Pawn(std::string(TexturePath).append("dilion.bmp"), g_windowManager->GetRenderer(), NULL, dilion_position);
-	GameObject::GameObject* dutchPlayer = new GameObject::Player(std::string(TexturePath).append("dutch.bmp"), g_windowManager->GetRenderer(), NULL, dutch_position);
+	//SDL_Rect* dilion_position = new SDL_Rect{ 200, 200, 64, 64 };
+	//SDL_Rect* dutch_position = new SDL_Rect{ 50, 200, 64, 64 };
+	//World::World* test = new World::World("TestWorld.nan");
+
+	//GameObject::GameObject* Background = new GameObject::GameObject(std::string(TexturePath).append("background.bmp"), g_windowManager->GetRenderer(), NULL, NULL);
+	//GameObject::GameObject* dilionPawn = new GameObject::Pawn(std::string(TexturePath).append("dilion.bmp"), g_windowManager->GetRenderer(), NULL, dilion_position);
+	//GameObject::GameObject* dutchPlayer = new GameObject::Player(std::string(TexturePath).append("dutch.bmp"), g_windowManager->GetRenderer(), NULL, dutch_position);
+
+	//test->AddObject(Background);
+	//test->AddObject(dilionPawn);
+	//test->AddObject(dutchPlayer);
+
+	//WorldManager::WorldManager* worldManager = new WorldManager::WorldManager(WorldPath, test);
+	//worldManager->SaveWorld();
+
+	g_worldManager = new WorldManager::WorldManager(WorldPath);
+	g_worldManager->LoadWorld("TestWorld.nan");
 
 	//Serialization test
 	//std::ofstream ofs("filename.nan");
@@ -54,9 +67,9 @@ bool InitializeGameObject()
 	//	ia & dilionPawn;
 	//}
 
-	g_windowManager->AddGameObject(Background);
-	g_windowManager->AddGameObject(dilionPawn);
-	g_windowManager->AddGameObject(dutchPlayer);
+	//g_windowManager->AddGameObject(Background);
+	//g_windowManager->AddGameObject(dilionPawn);
+	//g_windowManager->AddGameObject(dutchPlayer);
 
 	return true;
 }
@@ -86,10 +99,10 @@ void PollEvents()
 			{
 				quit = true;
 			}
-
 			g_windowManager->Update(&e);
+			g_worldManager->UpdateWorld(&e);
 		}
-
+		g_worldManager->RenderWorld(g_windowManager->GetRenderer());
 		g_windowManager->Render();
 	}
 }

@@ -27,23 +27,13 @@ SDL_Renderer* WindowManger::WindowManger::CreateRenderer()
 
 void WindowManger::WindowManger::Update(SDL_Event* e)
 {
-	for (auto object : _objects)
-	{
-		object->Update(e);
-	}
+	DESCENDANT_UNUSED(e);
 }
 
 void WindowManger::WindowManger::Render()
 {
 	Uint32 frametime = SDL_GetTicks();
 	Uint32 minFrameTime = GetMinimumFrameTime();
-
-	SDL_RenderClear(_renderer);
-
-	for (auto object : _objects)
-	{
-		object->Render(_renderer);
-	}
 
 	SDL_RenderPresent(_renderer);
 

@@ -6,7 +6,6 @@
 // include headers that implement a archive in simple text format
 #include <Boost/archive/text_oarchive.hpp>
 #include <Boost/archive/text_iarchive.hpp>
-#include <Boost/serialization/split_member.hpp>
 
 namespace GameObject
 {
@@ -15,10 +14,14 @@ namespace GameObject
 		friend class boost::serialization::access;
 
 	private:
+		SDL_Texture* _texture;
+		bool _requiresLoad = true;
+		std::string _texturePath;
+
 		DESCENDANT_EXPORT SDL_Surface* LoadBitmap(const char* path);
 
 		template<class Archive>
-		void save(Archive & ar, const unsigned int version) const
+		inline void serialize(Archive & ar, const unsigned int version)
 		{
 			DESCENDANT_UNUSED(version);
 
@@ -33,25 +36,6 @@ namespace GameObject
 			ar & dest_w;
 			ar & dest_h;
 		}
-
-		template<class Archive>
-		void load(Archive & ar, const unsigned int version)
-		{
-			DESCENDANT_UNUSED(version);
-
-			ar & _texturePath;
-			ar & src_x;
-			ar & src_y;
-			ar & src_w;
-			ar & src_h;
-
-			ar & dest_x;
-			ar & dest_y;
-			ar & dest_w;
-			ar & dest_h;
-		}
-
-		BOOST_SERIALIZATION_SPLIT_MEMBER()
 
 	protected:
 		int src_x = 0;
@@ -63,10 +47,6 @@ namespace GameObject
 		int dest_y = 0;
 		int dest_w = 0;
 		int dest_h = 0;
-
-		SDL_Texture* _texture;
-		bool _requiresLoad = true;
-		std::string _texturePath;
 
 		DESCENDANT_EXPORT SDL_Texture* LoadTexture(std::string texturePath, SDL_Renderer* renderer);
 

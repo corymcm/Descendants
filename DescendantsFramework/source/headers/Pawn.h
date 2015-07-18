@@ -17,22 +17,12 @@ namespace GameObject
 
 	private:
 		template<class Archive>
-		void save(Archive & ar, const unsigned int version) const
+		inline void serialize(Archive & ar, const unsigned int version)
 		{
 			DESCENDANT_UNUSED(version);
 
 			ar & boost::serialization::base_object<GameObject>(*this);
 		}
-
-		template<class Archive>
-		void load(Archive & ar, const unsigned int version)
-		{
-			DESCENDANT_UNUSED(version);
-
-			ar & boost::serialization::base_object<GameObject>(*this);
-		}
-
-		BOOST_SERIALIZATION_SPLIT_MEMBER()
 
 	public:
 		DESCENDANT_EXPORT Pawn(std::string texturePath, SDL_Renderer* renderer, SDL_Rect* position, SDL_Rect* destination);
