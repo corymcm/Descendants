@@ -20,6 +20,7 @@ namespace World
 	private:
 		std::vector<GameObject::GameObject*> _objects;
 		std::string _name;
+		std::string _texturePath;
 
 		World();
 		inline void SetName(std::string name) { _name = name; }
@@ -38,6 +39,7 @@ namespace World
 		DESCENDANT_EXPORT ~World();
 
 		DESCENDANT_EXPORT inline std::string GetName() { return _name; }
+		inline void SetTexturePath(std::string path) { _texturePath = path; }
 
 		DESCENDANT_EXPORT void Update(SDL_Event* e);
 		DESCENDANT_EXPORT void Render(SDL_Renderer* renderer);

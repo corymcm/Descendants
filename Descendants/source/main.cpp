@@ -25,10 +25,8 @@ bool InitializeGameObject()
 		return false;
 	}
 
-	std::string TexturePath = SDL_GetBasePath();
-	std::string WorldPath = SDL_GetBasePath();
-	WorldPath.append("..\\..\\..\\Data\\Worlds\\");
-	TexturePath.append("..\\..\\..\\Data\\Textures\\");
+	std::string dataFolder = SDL_GetBasePath();
+	dataFolder.append("..\\..\\..\\Data\\");
 
 	g_windowManager = new WindowManger::WindowManger("You son of a bitch!", 100, 100, 640, 480);
 
@@ -36,18 +34,18 @@ bool InitializeGameObject()
 	//SDL_Rect* dutch_position = new SDL_Rect{ 50, 200, 64, 64 };
 	//World::World* test = new World::World("TestWorld.nan");
 
-	//GameObject::GameObject* Background = new GameObject::GameObject(std::string(TexturePath).append("background.bmp"), g_windowManager->GetRenderer(), NULL, NULL);
-	//GameObject::GameObject* dilionPawn = new GameObject::Pawn(std::string(TexturePath).append("dilion.bmp"), g_windowManager->GetRenderer(), NULL, dilion_position);
-	//GameObject::GameObject* dutchPlayer = new GameObject::Player(std::string(TexturePath).append("dutch.bmp"), g_windowManager->GetRenderer(), NULL, dutch_position);
+	//GameObject::GameObject* Background = new GameObject::GameObject("background.bmp", g_windowManager->GetRenderer(), NULL, NULL);
+	//GameObject::GameObject* dilionPawn = new GameObject::Pawn("dilion.bmp", g_windowManager->GetRenderer(), NULL, dilion_position);
+	//GameObject::GameObject* dutchPlayer = new GameObject::Player("dutch.bmp", g_windowManager->GetRenderer(), NULL, dutch_position);
 
 	//test->AddObject(Background);
 	//test->AddObject(dilionPawn);
 	//test->AddObject(dutchPlayer);
 
-	//WorldManager::WorldManager* worldManager = new WorldManager::WorldManager(WorldPath, test);
+	//WorldManager::WorldManager* worldManager = new WorldManager::WorldManager(dataFolder, test);
 	//worldManager->SaveWorld();
 
-	g_worldManager = new WorldManager::WorldManager(WorldPath);
+	g_worldManager = new WorldManager::WorldManager(dataFolder);
 	g_worldManager->LoadWorld("TestWorld.nan");
 
 	//Serialization test

@@ -1,7 +1,7 @@
 22 serialization::archive 12 0 1 0
 0 13 TestWorld.nan 0 0 3 0 2 1 0
-1 94 C:\Users\Cory\Documents\GitHub\Descendants\Bin\x64\Debug\..\..\..\Data\Textures\background.bmp 0 0 0 0 0 0 0 0 3 4 Pawn 1 0
+1 14 background.bmp 0 0 0 0 0 0 0 0 3 4 Pawn 1 0
 2
-3 90 C:\Users\Cory\Documents\GitHub\Descendants\Bin\x64\Debug\..\..\..\Data\Textures\dilion.bmp 0 0 0 0 200 200 64 64 4 6 Player 1 0
+3 10 dilion.bmp 0 0 0 0 200 200 64 64 4 6 Player 1 0
 4
-5 89 C:\Users\Cory\Documents\GitHub\Descendants\Bin\x64\Debug\..\..\..\Data\Textures\dutch.bmp 0 0 0 0 50 200 64 64
+5 9 dutch.bmp 0 0 0 0 50 200 64 64

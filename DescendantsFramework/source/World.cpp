@@ -32,6 +32,8 @@ void World::World::Render(SDL_Renderer* renderer)
 {
 	for (auto object : _objects)
 	{
+		if (object->RequiresLoad)
+			object->SetTexture(_texturePath, renderer);
 		object->Render(renderer);
 	}
 }

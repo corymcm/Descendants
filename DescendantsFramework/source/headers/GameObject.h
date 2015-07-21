@@ -15,8 +15,7 @@ namespace GameObject
 
 	private:
 		SDL_Texture* _texture;
-		bool _requiresLoad = true;
-		std::string _texturePath;
+		std::string _textureName;
 
 		DESCENDANT_EXPORT SDL_Surface* LoadBitmap(const char* path);
 
@@ -25,7 +24,7 @@ namespace GameObject
 		{
 			DESCENDANT_UNUSED(version);
 
-			ar & _texturePath;
+			ar & _textureName;
 			ar & src_x;
 			ar & src_y;
 			ar & src_w;
@@ -65,10 +64,14 @@ namespace GameObject
 		};
 
 	public:
-		DESCENDANT_EXPORT GameObject(std::string texturePath, SDL_Renderer* renderer, SDL_Rect* source, SDL_Rect* destination);
+		bool RequiresLoad = true;
+
+		DESCENDANT_EXPORT GameObject(std::string textureName, SDL_Renderer* renderer, SDL_Rect* source, SDL_Rect* destination);
 		DESCENDANT_EXPORT GameObject();
 
 		virtual DESCENDANT_EXPORT ~GameObject();
+
+		DESCENDANT_EXPORT void SetTexture(std::string texturePath, SDL_Renderer* renderer);
 
 		virtual void DESCENDANT_EXPORT Update(SDL_Event* e);
 		virtual void DESCENDANT_EXPORT Render(SDL_Renderer* renderer);

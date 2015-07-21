@@ -12,7 +12,8 @@ namespace WorldManager
 	{
 	private:
 		World::World* _curretWorld;
-		std::string _worldResourceFolder;
+		std::string _worldPath;
+		std::string _texturePath;
 
 	public:
 		DESCENDANT_EXPORT inline World::World* GetCurrentWorld() { return _curretWorld; }
