@@ -4,4 +4,5 @@ ipch/
 *.sdf
 *.opensdf
 *.v12.suo
-*.vcxproj.user 
+*.vcxproj.user
+*.user
