@@ -20,14 +20,9 @@ namespace Renderers
 		SDL_Renderer_Wrapper(SDL_Renderer* renderer);
 		~SDL_Renderer_Wrapper();
 
-		void Render(GameObject::GameObject* obj) override;
+		void Render(GameObject::GameObject* obj, std::string texturePath) override;
 		void ClearRenderer() override;
 		void RenderPresent() override;
-
-		void* GetRendererPtr() override;
-
-		inline SDL_Renderer* GetRenderer() { return _renderer; }
-
 	};
 }
 

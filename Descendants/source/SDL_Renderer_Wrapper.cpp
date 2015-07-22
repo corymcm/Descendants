@@ -11,8 +11,11 @@ Renderers::SDL_Renderer_Wrapper::~SDL_Renderer_Wrapper()
 	SDL_DestroyRenderer(_renderer);
 }
 
-void Renderers::SDL_Renderer_Wrapper::Render(GameObject::GameObject* obj)
+void Renderers::SDL_Renderer_Wrapper::Render(GameObject::GameObject* obj, std::string texturePath)
 {
+	if (obj->RequiresLoad)
+		obj->SetTexture(texturePath, _renderer);
+
 	SDL_RenderCopy(_renderer, obj->GetTexture(), obj->GetSource(), obj->GetDestination());
 }
 
@@ -26,7 +29,3 @@ void Renderers::SDL_Renderer_Wrapper::RenderPresent()
 	SDL_RenderPresent(_renderer);
 }
 
-void* Renderers::SDL_Renderer_Wrapper::GetRendererPtr()
-{
-	return static_cast<void*>(_renderer);
-}
