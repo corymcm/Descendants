@@ -36,10 +36,10 @@ namespace World
 
 	public:
 		DESCENDANT_EXPORT World(std::string fileName);
-		DESCENDANT_EXPORT ~World();
+		DESCENDANT_EXPORT virtual ~World();
 
 		DESCENDANT_EXPORT inline std::string GetName() { return _name; }
-		inline void SetTexturePath(std::string path) { _texturePath = path; }
+		DESCENDANT_EXPORT inline void SetTexturePath(std::string path) { _texturePath = path; }
 
 		DESCENDANT_EXPORT void Update(SDL_Event* e);
 		DESCENDANT_EXPORT void Render(SDL_Renderer* renderer);
