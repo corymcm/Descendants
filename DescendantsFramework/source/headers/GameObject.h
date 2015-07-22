@@ -49,20 +49,6 @@ namespace GameObject
 
 		DESCENDANT_EXPORT SDL_Texture* LoadTexture(std::string texturePath, SDL_Renderer* renderer);
 
-		DESCENDANT_EXPORT SDL_Rect* GetDestination()
-		{
-			if (dest_x == 0 && dest_y == 0 && dest_w == 0 && dest_h == 0)
-				return nullptr;
-			return new SDL_Rect{ dest_x, dest_y, dest_w, dest_h };
-		};
-
-		DESCENDANT_EXPORT SDL_Rect* GetPosition()
-		{ 
-			if (src_x == 0 && src_y == 0 && src_w == 0 && src_h == 0)
-				return nullptr;
-			return new SDL_Rect{ src_x, src_y, src_w, src_h };
-		};
-
 	public:
 		bool RequiresLoad = true;
 
@@ -72,9 +58,24 @@ namespace GameObject
 		virtual DESCENDANT_EXPORT ~GameObject();
 
 		DESCENDANT_EXPORT void SetTexture(std::string texturePath, SDL_Renderer* renderer);
+		DESCENDANT_EXPORT inline SDL_Texture* GetTexture() const { return _texture; }
+
+		DESCENDANT_EXPORT inline SDL_Rect* GetDestination()
+		{
+			if (dest_x == 0 && dest_y == 0 && dest_w == 0 && dest_h == 0)
+				return nullptr;
+			return new SDL_Rect{ dest_x, dest_y, dest_w, dest_h };
+		};
+
+		DESCENDANT_EXPORT inline SDL_Rect* GetSource()
+		{
+			if (src_x == 0 && src_y == 0 && src_w == 0 && src_h == 0)
+				return nullptr;
+			return new SDL_Rect{ src_x, src_y, src_w, src_h };
+		};
 
 		virtual void DESCENDANT_EXPORT Update(SDL_Event* e);
-		virtual void DESCENDANT_EXPORT Render(SDL_Renderer* renderer);
+
 	};
 }
 

@@ -3,9 +3,9 @@
 #ifndef WINDOWMANAGER_H
 #define WINDOWMANAGER_H
 
-#include <SDL.h>
 #include <vector>
 #include "GameObject.h"
+#include "SDL_Renderer_Wrapper.h"
 
 namespace WindowManger
 {
@@ -15,10 +15,10 @@ namespace WindowManger
 		int _fps;
 
 		SDL_Window* _window;
-		SDL_Renderer* _renderer;
+		Framework::Renderer* _renderer;
 		std::vector<GameObject::GameObject*> _objects;
 		
-		SDL_Renderer* CreateRenderer();
+		Framework::Renderer* CreateRenderer();
 		void CleanupWindowManger();
 		void HandleError(const char* message);
 
@@ -32,7 +32,7 @@ namespace WindowManger
 		void Render();
 		void AddGameObject(GameObject::GameObject* gameObjects);
 
-		inline SDL_Renderer* GetRenderer() { return _renderer; }
+		inline Framework::Renderer* GetRenderer() { return _renderer; }
 		inline int GetFPS(){ return _fps; }
 		inline void SetFPS(const int fps) { _fps = fps; }
 	};

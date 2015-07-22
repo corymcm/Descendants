@@ -26,9 +26,9 @@ void WorldManager::WorldManager::UpdateWorld(SDL_Event* e)
 	_curretWorld->Update(e);
 }
 
-void WorldManager::WorldManager::RenderWorld(SDL_Renderer* renderer)
+void WorldManager::WorldManager::RenderWorld(Framework::Renderer* renderer)
 {
-	SDL_RenderClear(renderer);
+	renderer->ClearRenderer();
 	_curretWorld->Render(renderer);
 }
 

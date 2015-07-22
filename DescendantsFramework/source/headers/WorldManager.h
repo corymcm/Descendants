@@ -5,6 +5,7 @@
 
 #include <vector>
 #include "World.h"
+#include "Renderer.h"
 
 namespace WorldManager
 {
@@ -23,7 +24,7 @@ namespace WorldManager
 		DESCENDANT_EXPORT ~WorldManager();
 
 		DESCENDANT_EXPORT void UpdateWorld(SDL_Event* e);
-		DESCENDANT_EXPORT void RenderWorld(SDL_Renderer* renderer);
+		DESCENDANT_EXPORT void RenderWorld(Framework::Renderer* renderer);
 		DESCENDANT_EXPORT void LoadWorld(std::string worldName);
 		DESCENDANT_EXPORT void SaveWorld();
 	};

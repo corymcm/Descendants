@@ -28,13 +28,13 @@ void World::World::Update(SDL_Event* e)
 	}
 }
 
-void World::World::Render(SDL_Renderer* renderer)
+void World::World::Render(Framework::Renderer* renderer)
 {
 	for (auto object : _objects)
 	{
 		if (object->RequiresLoad)
-			object->SetTexture(_texturePath, renderer);
-		object->Render(renderer);
+			object->SetTexture(_texturePath, static_cast<SDL_Renderer*>(renderer->GetRendererPtr()));
+		renderer->Render(object);
 	}
 }
 

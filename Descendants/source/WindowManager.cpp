@@ -18,11 +18,11 @@ WindowManger::WindowManger::~WindowManger()
 	CleanupWindowManger();
 }
 
-SDL_Renderer* WindowManger::WindowManger::CreateRenderer()
+Framework::Renderer* WindowManger::WindowManger::CreateRenderer()
 {
 	ASSERT(_window);
-
-	return SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	SDL_Renderer* ren = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	return new Renderers::SDL_Renderer_Wrapper(ren);
 }
 
 void WindowManger::WindowManger::Update(SDL_Event* e)
@@ -35,7 +35,7 @@ void WindowManger::WindowManger::Render()
 	Uint32 frametime = SDL_GetTicks();
 	Uint32 minFrameTime = GetMinimumFrameTime();
 
-	SDL_RenderPresent(_renderer);
+	_renderer->RenderPresent();
 
 	if (SDL_GetTicks() - frametime < minFrameTime)
 		SDL_Delay(minFrameTime - (SDL_GetTicks() - frametime));
@@ -50,8 +50,8 @@ void WindowManger::WindowManger::CleanupWindowManger()
 {
 	if (_window != nullptr)
 		SDL_DestroyWindow(_window);
-	if (_window != nullptr)
-		SDL_DestroyRenderer(_renderer);
+	if (_renderer != nullptr)
+		delete _renderer;
 
 	while (!_objects.empty()) delete _objects.back(), _objects.pop_back();
 }

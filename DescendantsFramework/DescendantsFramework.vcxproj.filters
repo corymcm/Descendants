@@ -27,6 +27,9 @@
     <ClInclude Include="source\headers\stdafx.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="source\headers\Renderer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\stdafx.cpp">

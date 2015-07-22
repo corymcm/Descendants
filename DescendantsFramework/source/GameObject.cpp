@@ -41,11 +41,6 @@ void GameObject::GameObject::Update(SDL_Event* e)
 	DESCENDANT_UNUSED(e);
 }
 
-void GameObject::GameObject::Render(SDL_Renderer* renderer)
-{
-	SDL_RenderCopy(renderer, _texture, GetPosition(), GetDestination());
-}
-
 SDL_Surface* GameObject::GameObject::LoadBitmap(const char* path)
 {
 	SDL_Surface* bmp = SDL_LoadBMP(path);
