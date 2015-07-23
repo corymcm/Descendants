@@ -99,7 +99,8 @@
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)</Command>
+      <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)
+copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-gd-1_58.dll $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -120,7 +121,8 @@
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)</Command>
+      <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)
+copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-gd-1_58.dll $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -145,7 +147,8 @@
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)</Command>
+      <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)
+copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-1_58.dll $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -170,7 +173,8 @@
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)</Command>
+      <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)
+copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-1_58.dll $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
