@@ -2,13 +2,11 @@
 #include "GameObject.h"
 
 GameObject::GameObject::GameObject()
-	:_texture(nullptr)
 {
 
 }
 
-GameObject::GameObject::GameObject(std::string textureName, SDL_Renderer* renderer, SDL_Rect* source, SDL_Rect* destination)
-	:_texture(nullptr)
+GameObject::GameObject::GameObject(std::string textureName, SDL_Rect* source, SDL_Rect* destination)
 {
 	if (source != nullptr)
 	{
@@ -26,49 +24,14 @@ GameObject::GameObject::GameObject(std::string textureName, SDL_Renderer* render
 		dest_h = destination->h;
 	}
 
-	_texture = LoadTexture(textureName, renderer);
 	_textureName = textureName;
-	RequiresLoad = false;
 }
 
 GameObject::GameObject::~GameObject()
 {
-	SDL_DestroyTexture(_texture);
 }
 
 void GameObject::GameObject::Update(SDL_Event* e)
 {
 	DESCENDANT_UNUSED(e);
-}
-
-SDL_Surface* GameObject::GameObject::LoadBitmap(const char* path)
-{
-	SDL_Surface* bmp = SDL_LoadBMP(path);
-	if (bmp == nullptr)
-	{
-		LogError("SDL_LoadBMP Error: ");
-		return nullptr;
-	}
-	return bmp;
-}
-
-SDL_Texture* GameObject::GameObject::LoadTexture(std::string texturePath, SDL_Renderer* renderer)
-{
-	SDL_Surface* bmp = LoadBitmap(texturePath.c_str());
-
-	SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, bmp);
-	SDL_FreeSurface(bmp);
-	if (tex == nullptr)
-	{
-		LogError("SDL_CreateTextureFromSurface Error: ");
-
-		return nullptr;
-	}
-
-	return tex;
-}
-
-void GameObject::GameObject::SetTexture(std::string texturePath, SDL_Renderer* renderer)
-{
-	_texture = LoadTexture(texturePath + _textureName, renderer);
 }

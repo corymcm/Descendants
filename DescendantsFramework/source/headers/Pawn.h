@@ -25,7 +25,7 @@ namespace GameObject
 		}
 
 	public:
-		DESCENDANT_EXPORT Pawn(std::string texturePath, SDL_Renderer* renderer, SDL_Rect* position, SDL_Rect* destination);
+		DESCENDANT_EXPORT Pawn(std::string texturePath, SDL_Rect* position, SDL_Rect* destination);
 		DESCENDANT_EXPORT Pawn();
 
 		DESCENDANT_EXPORT virtual ~Pawn();

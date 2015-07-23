@@ -3,11 +3,10 @@
 #ifndef SDL_RENDERER_WRAPPER_H
 #define SDL_RENDERER_WRAPPER_H
 
-
 #include "GameObject.h"
 #include "Renderer.h"
 
-#include <SDL.h>
+#include "SDL_TextureManager.h"
 
 namespace Renderers
 {
@@ -15,6 +14,7 @@ namespace Renderers
 	{
 	private:
 		SDL_Renderer* _renderer;
+		TextureManager::SDL_TextureManager* _textureManager;
 
 	public:
 		SDL_Renderer_Wrapper(SDL_Renderer* renderer);

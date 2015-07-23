@@ -25,7 +25,7 @@ namespace GameObject
 		}
 
 	public:
-		DESCENDANT_EXPORT Player(std::string texturePath, SDL_Renderer* renderer, SDL_Rect* position, SDL_Rect* destination);
+		DESCENDANT_EXPORT Player(std::string texturePath, SDL_Rect* position, SDL_Rect* destination);
 		DESCENDANT_EXPORT Player();
 		DESCENDANT_EXPORT virtual ~Player();
 

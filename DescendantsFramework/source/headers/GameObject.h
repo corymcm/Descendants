@@ -14,10 +14,7 @@ namespace GameObject
 		friend class boost::serialization::access;
 
 	private:
-		SDL_Texture* _texture;
 		std::string _textureName;
-
-		DESCENDANT_EXPORT SDL_Surface* LoadBitmap(const char* path);
 
 		template<class Archive>
 		inline void serialize(Archive & ar, const unsigned int version)
@@ -47,27 +44,22 @@ namespace GameObject
 		int dest_w = 0;
 		int dest_h = 0;
 
-		DESCENDANT_EXPORT SDL_Texture* LoadTexture(std::string texturePath, SDL_Renderer* renderer);
-
 	public:
-		bool RequiresLoad = true;
-
-		DESCENDANT_EXPORT GameObject(std::string textureName, SDL_Renderer* renderer, SDL_Rect* source, SDL_Rect* destination);
+		DESCENDANT_EXPORT GameObject(std::string textureName, SDL_Rect* source, SDL_Rect* destination);
 		DESCENDANT_EXPORT GameObject();
 
 		virtual DESCENDANT_EXPORT ~GameObject();
 
-		DESCENDANT_EXPORT void SetTexture(std::string texturePath, SDL_Renderer* renderer);
-		DESCENDANT_EXPORT inline SDL_Texture* GetTexture() const { return _texture; }
+		inline std::string GetTextureName() const { return _textureName; }
 
-		DESCENDANT_EXPORT inline SDL_Rect* GetDestination()
+		inline SDL_Rect* GetDestination()
 		{
 			if (dest_x == 0 && dest_y == 0 && dest_w == 0 && dest_h == 0)
 				return nullptr;
 			return new SDL_Rect{ dest_x, dest_y, dest_w, dest_h };
 		};
 
-		DESCENDANT_EXPORT inline SDL_Rect* GetSource()
+		inline SDL_Rect* GetSource()
 		{
 			if (src_x == 0 && src_y == 0 && src_w == 0 && src_h == 0)
 				return nullptr;
@@ -75,7 +67,6 @@ namespace GameObject
 		};
 
 		virtual void DESCENDANT_EXPORT Update(SDL_Event* e);
-
 	};
 }
 
