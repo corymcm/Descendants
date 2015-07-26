@@ -18,7 +18,7 @@ WindowManger::WindowManger::~WindowManger()
 	CleanupWindowManger();
 }
 
-Framework::Renderer* WindowManger::WindowManger::CreateRenderer()
+Framework::IRenderer* WindowManger::WindowManger::CreateRenderer()
 {
 	ASSERT(_window);
 	SDL_Renderer* ren = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);

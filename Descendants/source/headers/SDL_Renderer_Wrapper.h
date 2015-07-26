@@ -4,13 +4,13 @@
 #define SDL_RENDERER_WRAPPER_H
 
 #include "GameObject.h"
-#include "Renderer.h"
+#include "IRenderer.h"
 
 #include "SDL_TextureManager.h"
 
 namespace Renderers
 {
-	class SDL_Renderer_Wrapper : public Framework::Renderer
+	class SDL_Renderer_Wrapper : public Framework::IRenderer
 	{
 	private:
 		SDL_Renderer* _renderer;

@@ -15,10 +15,10 @@ namespace WindowManger
 		int _fps;
 
 		SDL_Window* _window;
-		Framework::Renderer* _renderer;
+		Framework::IRenderer* _renderer;
 		std::vector<GameObject::GameObject*> _objects;
 		
-		Framework::Renderer* CreateRenderer();
+		Framework::IRenderer* CreateRenderer();
 		void CleanupWindowManger();
 		void HandleError(const char* message);
 
@@ -32,7 +32,7 @@ namespace WindowManger
 		void Render();
 		void AddGameObject(GameObject::GameObject* gameObjects);
 
-		inline Framework::Renderer* GetRenderer() { return _renderer; }
+		inline Framework::IRenderer* GetRenderer() { return _renderer; }
 		inline int GetFPS(){ return _fps; }
 		inline void SetFPS(const int fps) { _fps = fps; }
 	};

@@ -28,7 +28,7 @@ void World::World::Update(SDL_Event* e)
 	}
 }
 
-void World::World::Render(Framework::Renderer* renderer)
+void World::World::Render(Framework::IRenderer* renderer)
 {
 	for (auto object : _objects)
 	{

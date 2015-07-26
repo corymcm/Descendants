@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "GameObject.h"
-#include "Renderer.h"
+#include "IRenderer.h"
 
 // include headers that implement a archive in simple text format
 #include <Boost/archive/text_oarchive.hpp>
@@ -43,7 +43,7 @@ namespace World
 		inline void SetTexturePath(std::string path) { _texturePath = path; }
 
 		DESCENDANT_EXPORT void Update(SDL_Event* e);
-		DESCENDANT_EXPORT void Render(Framework::Renderer* renderer);
+		DESCENDANT_EXPORT void Render(Framework::IRenderer* renderer);
 		DESCENDANT_EXPORT void AddObject(GameObject::GameObject* object);
 		DESCENDANT_EXPORT void RemoveObject(GameObject::GameObject* object);
 	};
