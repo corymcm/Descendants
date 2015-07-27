@@ -20,8 +20,13 @@ World::World::~World()
 	while (!_objects.empty()) delete _objects.back(), _objects.pop_back();
 }
 
-void World::World::Update(SDL_Event* e)
+void World::World::Update(SDL_Event* e, Framework::ISoundManager* soundManager)
 {
+	if (soundManager->GetCurrentMusic() != _backgroundMusic)
+	{
+		soundManager->PlayMusic(_backgroundMusic);
+	}
+
 	for (auto object : _objects)
 	{
 		object->Update(e);

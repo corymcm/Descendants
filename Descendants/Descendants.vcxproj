@@ -86,7 +86,7 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;$(ProjectDir)..\External\Boost\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;$(ProjectDir)..\External\Boost\;$(ProjectDir)..\External\SDL_Mixer\include\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <TreatWarningAsError>true</TreatWarningAsError>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -94,13 +94,17 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib; SDL2Main.lib; DescendantsFramework.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;$(ProjectDir)..\External\Boost\$(Platform)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2Main.lib;DescendantsFramework.lib;SDL2_mixer.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;$(ProjectDir)..\External\Boost\$(Platform)\;$(ProjectDir)..\External\SDL_Mixer\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)
-copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-gd-1_58.dll $(OutDir)</Command>
+copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-gd-1_58.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\$(Configuration)\SDL2_mixer.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\libvorbisfile-3.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\libvorbis-0.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\libogg-0.dll $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -108,7 +112,7 @@ copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-gd-
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;$(ProjectDir)..\External\Boost\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;$(ProjectDir)..\External\Boost\;$(ProjectDir)..\External\SDL_Mixer\include\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <TreatWarningAsError>true</TreatWarningAsError>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -116,13 +120,17 @@ copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-gd-
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib; SDL2Main.lib; DescendantsFramework.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;$(ProjectDir)..\External\Boost\$(Platform)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2Main.lib;DescendantsFramework.lib;SDL2_mixer.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;$(ProjectDir)..\External\Boost\$(Platform)\;$(ProjectDir)..\External\SDL_Mixer\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)
-copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-gd-1_58.dll $(OutDir)</Command>
+copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-gd-1_58.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\$(Configuration)\SDL2_mixer.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\libvorbisfile-3.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\libvorbis-0.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\libogg-0.dll $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -132,7 +140,7 @@ copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-gd-
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;$(ProjectDir)..\External\Boost\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;$(ProjectDir)..\External\Boost\;$(ProjectDir)..\External\SDL_Mixer\include\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <TreatWarningAsError>true</TreatWarningAsError>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -142,13 +150,17 @@ copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-gd-
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2.lib; SDL2Main.lib; DescendantsFramework.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;$(ProjectDir)..\External\Boost\$(Platform)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2Main.lib;DescendantsFramework.lib;SDL2_mixer.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;$(ProjectDir)..\External\Boost\$(Platform)\;$(ProjectDir)..\External\SDL_Mixer\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)
-copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-1_58.dll $(OutDir)</Command>
+copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-1_58.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\$(Configuration)\SDL2_mixer.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\libvorbisfile-3.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\libvorbis-0.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\libogg-0.dll $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -158,7 +170,7 @@ copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-1_5
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;$(ProjectDir)..\External\Boost\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\External\SDL\include\;$(ProjectDir)source\headers\;$(SolutionDir);$(SolutionDir)\DescendantsFramework\source\headers\;$(ProjectDir)..\External\Boost\;$(ProjectDir)..\External\SDL_Mixer\include\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <TreatWarningAsError>true</TreatWarningAsError>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -168,13 +180,17 @@ copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-1_5
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2.lib; SDL2Main.lib; DescendantsFramework.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;$(ProjectDir)..\External\Boost\$(Platform)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2Main.lib;DescendantsFramework.lib;SDL2_mixer.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\;$(OutputPath)\;$(ProjectDir)..\External\Boost\$(Platform)\;$(ProjectDir)..\External\SDL_Mixer\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>copy $(ProjectDir)..\External\SDL\$(Platform)\$(Configuration)\SDL2.dll $(OutDir)
-copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-1_58.dll $(OutDir)</Command>
+copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-1_58.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\$(Configuration)\SDL2_mixer.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\libvorbisfile-3.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\libvorbis-0.dll $(OutDir)
+copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\libogg-0.dll $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -185,6 +201,7 @@ copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-1_5
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="source\SDL_Renderer_Wrapper.cpp" />
+    <ClCompile Include="source\SDL_SoundManager.cpp" />
     <ClCompile Include="source\SDL_TextureManager.cpp" />
     <ClCompile Include="source\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -197,6 +214,7 @@ copy $(ProjectDir)..\External\Boost\$(Platform)\boost_serialization-vc120-mt-1_5
   <ItemGroup>
     <ClInclude Include="source\headers\main.h" />
     <ClInclude Include="source\headers\SDL_Renderer_Wrapper.h" />
+    <ClInclude Include="source\headers\SDL_SoundManager.h" />
     <ClInclude Include="source\headers\SDL_TextureManager.h" />
     <ClInclude Include="source\headers\stdafx.h" />
     <ClInclude Include="source\headers\WindowManager.h" />

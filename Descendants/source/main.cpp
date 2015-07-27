@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "World.h"
 #include "WorldManager.h"
+#include "SDL_SoundManager.h"
 #include <fstream>
 
 // TODO : Wrap this in a game object
@@ -29,23 +30,26 @@ bool InitializeGameObject()
 	dataFolder.append("..\\..\\..\\Data\\");
 
 	g_windowManager = new WindowManger::WindowManger("You son of a bitch!", 100, 100, 640, 480);
+	SoundManager::SDL_SoundManager* soundManager = new SoundManager::SDL_SoundManager(dataFolder + std::string("Sounds\\"));
 
 	//SDL_Rect* dilion_position = new SDL_Rect{ 200, 200, 64, 64 };
 	//SDL_Rect* dutch_position = new SDL_Rect{ 50, 200, 64, 64 };
-	//World::World* test = new World::World("TestWorld.nan");
 
-	//GameObject::GameObject* Background = new GameObject::GameObject("background.bmp", g_windowManager->GetRenderer(), NULL, NULL);
-	//GameObject::GameObject* dilionPawn = new GameObject::Pawn("dilion.bmp", g_windowManager->GetRenderer(), NULL, dilion_position);
-	//GameObject::GameObject* dutchPlayer = new GameObject::Player("dutch.bmp", g_windowManager->GetRenderer(), NULL, dutch_position);
+	//World::World* test = new World::World("TestWorld.nan");
+	//test->SetBackgroundMusic("VietnamJungleThemeRambo.mp3");
+
+	//GameObject::GameObject* Background = new GameObject::GameObject("background.bmp", NULL, NULL);
+	//GameObject::GameObject* dilionPawn = new GameObject::Pawn("dilion.bmp", NULL, dilion_position);
+	//GameObject::GameObject* dutchPlayer = new GameObject::Player("dutch.bmp", NULL, dutch_position);
 
 	//test->AddObject(Background);
 	//test->AddObject(dilionPawn);
 	//test->AddObject(dutchPlayer);
 
-	//WorldManager::WorldManager* worldManager = new WorldManager::WorldManager(dataFolder, test);
+	//WorldManager::WorldManager* worldManager = new WorldManager::WorldManager(dataFolder, soundManager, test);
 	//worldManager->SaveWorld();
 
-	g_worldManager = new WorldManager::WorldManager(dataFolder);
+	g_worldManager = new WorldManager::WorldManager(dataFolder, soundManager);
 	g_worldManager->LoadWorld("TestWorld.nan");
 
 	//Serialization test

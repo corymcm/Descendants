@@ -2,15 +2,17 @@
 #include "WorldManager.h"
 #include <fstream>
 
-WorldManager::WorldManager::WorldManager(std::string resourcePath)
-	: _curretWorld(NULL)
+WorldManager::WorldManager::WorldManager(std::string resourcePath, Framework::ISoundManager* soundManager)
+	: _curretWorld(NULL),
+	_soundManager(NULL)
 {
 	_worldPath = resourcePath + "Worlds\\";
 	_texturePath = resourcePath + "Textures\\";
+	_soundManager = soundManager;
 }
 
-WorldManager::WorldManager::WorldManager(std::string resourcePath, World::World* world)
-	: WorldManager::WorldManager(resourcePath)
+WorldManager::WorldManager::WorldManager(std::string resourcePath, Framework::ISoundManager* soundManager, World::World* world)
+	: WorldManager::WorldManager(resourcePath, soundManager)
 {
 	_curretWorld = world;
 	_curretWorld->SetTexturePath(_texturePath);
@@ -19,11 +21,12 @@ WorldManager::WorldManager::WorldManager(std::string resourcePath, World::World*
 WorldManager::WorldManager::~WorldManager()
 {
 	delete _curretWorld;
+	delete _soundManager;
 }
 
 void WorldManager::WorldManager::UpdateWorld(SDL_Event* e)
 {
-	_curretWorld->Update(e);
+	_curretWorld->Update(e, _soundManager);
 }
 
 void WorldManager::WorldManager::RenderWorld(Framework::IRenderer* renderer)

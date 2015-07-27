@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef RENDERER_H
-#define RENDERER_H
+#ifndef IRENDERER_H
+#define IRENDERER_H
 
 #include "GameObject.h"
 
@@ -17,4 +17,4 @@ namespace Framework
 	};
 }
 
-#endif // RENDERER_H
+#endif // IRENDERER_H

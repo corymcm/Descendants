@@ -6,12 +6,14 @@
 #include <vector>
 #include "World.h"
 #include "IRenderer.h"
+#include "ISoundManager.h"
 
 namespace WorldManager
 {
 	class WorldManager
 	{
 	private:
+		Framework::ISoundManager* _soundManager;
 		World::World* _curretWorld;
 		std::string _worldPath;
 		std::string _texturePath;
@@ -19,8 +21,8 @@ namespace WorldManager
 	public:
 		DESCENDANT_EXPORT inline World::World* GetCurrentWorld() { return _curretWorld; }
 
-		DESCENDANT_EXPORT WorldManager(std::string resourcePath);
-		DESCENDANT_EXPORT WorldManager(std::string resourcePath, World::World* world);
+		DESCENDANT_EXPORT WorldManager(std::string resourcePath, Framework::ISoundManager* soundManager);
+		DESCENDANT_EXPORT WorldManager(std::string resourcePath, Framework::ISoundManager* soundManager, World::World* world);
 		DESCENDANT_EXPORT ~WorldManager();
 
 		DESCENDANT_EXPORT void UpdateWorld(SDL_Event* e);

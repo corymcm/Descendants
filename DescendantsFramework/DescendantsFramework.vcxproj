@@ -181,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\headers\GameObject.h" />
+    <ClInclude Include="source\headers\ISoundManager.h" />
     <ClInclude Include="source\headers\Pawn.h" />
     <ClInclude Include="source\headers\IRenderer.h" />
     <ClInclude Include="source\headers\WorldManager.h" />

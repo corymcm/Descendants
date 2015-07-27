@@ -3,12 +3,26 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
+#include <unordered_map> 
+
 // include headers that implement a archive in simple text format
 #include <Boost/archive/text_oarchive.hpp>
 #include <Boost/archive/text_iarchive.hpp>
+#include <boost/serialization/unordered_map.hpp>
 
 namespace GameObject
 {
+	enum class EGameObjectState : unsigned int
+	{
+		Alive,
+		Dead,
+		Moving,
+		Collided,
+		USED,
+		USING,
+		FIRING
+	};
+
 	class GameObject
 	{
 		friend class boost::serialization::access;
@@ -22,6 +36,7 @@ namespace GameObject
 			DESCENDANT_UNUSED(version);
 
 			ar & _textureName;
+			ar & _soundDictionary;
 			ar & src_x;
 			ar & src_y;
 			ar & src_w;
@@ -44,6 +59,8 @@ namespace GameObject
 		int dest_w = 0;
 		int dest_h = 0;
 
+		std::unordered_map<EGameObjectState, std::string> _soundDictionary;
+
 	public:
 		DESCENDANT_EXPORT GameObject(std::string textureName, SDL_Rect* source, SDL_Rect* destination);
 		DESCENDANT_EXPORT GameObject();
@@ -65,6 +82,12 @@ namespace GameObject
 				return nullptr;
 			return new SDL_Rect{ src_x, src_y, src_w, src_h };
 		};
+
+		inline std::string GetSound(EGameObjectState eState)
+		{
+			auto search = _soundDictionary.find(eState);
+			return search != _soundDictionary.end() ? search->second : nullptr;
+		}
 
 		virtual void DESCENDANT_EXPORT Update(SDL_Event* e);
 	};
