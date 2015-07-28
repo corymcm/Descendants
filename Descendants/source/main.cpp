@@ -36,7 +36,7 @@ bool InitializeGameObject()
 	//SDL_Rect* dutch_position = new SDL_Rect{ 50, 200, 64, 64 };
 
 	//World::World* test = new World::World("TestWorld.nan");
-	//test->SetBackgroundMusic("VietnamJungleThemeRambo.mp3");
+	//test->SetBackgroundMusic("VietnamJungleThemeRambo.ogg");
 
 	//GameObject::GameObject* Background = new GameObject::GameObject("background.bmp", NULL, NULL);
 	//GameObject::GameObject* dilionPawn = new GameObject::Pawn("dilion.bmp", NULL, dilion_position);

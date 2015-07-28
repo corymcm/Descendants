@@ -23,6 +23,34 @@ namespace GameObject
 		FIRING
 	};
 
+	class Rect
+	{
+		friend class boost::serialization::access;
+
+	public:
+		int x;
+		int y;
+		int w;
+		int h;
+
+		bool IsEmpty()
+		{
+			return x == 0 && y == 0 && w == 0 && h == 0;
+		}
+
+	private:
+		template<class Archive>
+		inline void serialize(Archive & ar, const unsigned int version)
+		{
+			DESCENDANT_UNUSED(version);
+
+			ar & x;
+			ar & y;
+			ar & w;
+			ar & h;
+		}
+	};
+
 	class GameObject
 	{
 		friend class boost::serialization::access;
@@ -37,27 +65,14 @@ namespace GameObject
 
 			ar & _textureName;
 			ar & _soundDictionary;
-			ar & src_x;
-			ar & src_y;
-			ar & src_w;
-			ar & src_h;
 
-			ar & dest_x;
-			ar & dest_y;
-			ar & dest_w;
-			ar & dest_h;
+			ar & _sourceRect;
+			ar & _destRect;
 		}
 
 	protected:
-		int src_x = 0;
-		int src_y = 0;
-		int src_w = 0;
-		int src_h = 0;
-
-		int dest_x = 0;
-		int dest_y = 0;
-		int dest_w = 0;
-		int dest_h = 0;
+		Rect _destRect;
+		Rect _sourceRect;
 
 		std::unordered_map<EGameObjectState, std::string> _soundDictionary;
 
@@ -71,16 +86,16 @@ namespace GameObject
 
 		inline SDL_Rect* GetDestination()
 		{
-			if (dest_x == 0 && dest_y == 0 && dest_w == 0 && dest_h == 0)
+			if (_destRect.IsEmpty())
 				return nullptr;
-			return new SDL_Rect{ dest_x, dest_y, dest_w, dest_h };
+			return new SDL_Rect{ _destRect.x, _destRect.y, _destRect.w, _destRect.h };
 		};
 
 		inline SDL_Rect* GetSource()
 		{
-			if (src_x == 0 && src_y == 0 && src_w == 0 && src_h == 0)
+			if (_sourceRect.IsEmpty())
 				return nullptr;
-			return new SDL_Rect{ src_x, src_y, src_w, src_h };
+			return new SDL_Rect{ _sourceRect.x, _sourceRect.y, _sourceRect.w, _sourceRect.h };
 		};
 
 		inline std::string GetSound(EGameObjectState eState)
