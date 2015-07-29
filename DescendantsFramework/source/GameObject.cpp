@@ -6,7 +6,7 @@ GameObject::GameObject::GameObject()
 
 }
 
-GameObject::GameObject::GameObject(std::string textureName, SDL_Rect* source, SDL_Rect* destination)
+GameObject::GameObject::GameObject(std::string textureName, Rect* source, Rect* destination)
 {
 	if (source != nullptr)
 	{

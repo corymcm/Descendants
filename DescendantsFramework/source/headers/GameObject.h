@@ -76,7 +76,7 @@ namespace GameObject
 		Rect DestRect;
 		Rect SourceRect;
 
-		DESCENDANT_EXPORT GameObject(std::string textureName, SDL_Rect* source, SDL_Rect* destination);
+		DESCENDANT_EXPORT GameObject(std::string textureName, Rect* source, Rect* destination);
 		DESCENDANT_EXPORT GameObject();
 
 		virtual DESCENDANT_EXPORT ~GameObject();

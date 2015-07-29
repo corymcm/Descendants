@@ -32,8 +32,8 @@ bool InitializeGameObject()
 	g_windowManager = new WindowManger::WindowManger("You son of a bitch!", 100, 100, 640, 480);
 	SoundManager::SDL_SoundManager* soundManager = new SoundManager::SDL_SoundManager(dataFolder + std::string("Sounds\\"));
 
-	//SDL_Rect* dilion_position = new SDL_Rect{ 200, 200, 64, 64 };
-	//SDL_Rect* dutch_position = new SDL_Rect{ 50, 200, 64, 64 };
+	//GameObject::Rect* dilion_position = new GameObject::Rect{ 200, 200, 64, 64 };
+	//GameObject::Rect* dutch_position = new GameObject::Rect{ 50, 200, 64, 64 };
 
 	//World::World* test = new World::World("TestWorld.nan");
 	//test->SetBackgroundMusic("VietnamJungleThemeRambo.ogg");
