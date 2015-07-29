@@ -19,7 +19,15 @@ void Renderers::SDL_Renderer_Wrapper::Render(GameObject::GameObject* obj, std::s
 	if (_textureManager == nullptr)
 		_textureManager = new TextureManager::SDL_TextureManager(texturePath);
 
-	SDL_RenderCopy(_renderer, _textureManager->GetTexture(obj->GetTextureName(), _renderer), obj->GetSource(), obj->GetDestination());
+	SDL_Rect* src = ConvertToSDL_Rect(obj->SourceRect);
+	SDL_Rect* dst = ConvertToSDL_Rect(obj->DestRect);
+
+	SDL_RenderCopy(_renderer, _textureManager->GetTexture(obj->GetTextureName(), _renderer), src, dst);
+
+	if (src != nullptr)
+		delete src;
+	if (dst != nullptr)
+		delete dst;
 }
 
 void Renderers::SDL_Renderer_Wrapper::ClearRenderer()

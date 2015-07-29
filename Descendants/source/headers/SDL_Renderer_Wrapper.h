@@ -16,6 +16,13 @@ namespace Renderers
 		SDL_Renderer* _renderer;
 		TextureManager::SDL_TextureManager* _textureManager;
 
+		inline SDL_Rect* ConvertToSDL_Rect(GameObject::Rect rect)
+		{
+			if (rect.IsEmpty())
+				return nullptr;
+			return new SDL_Rect { rect.x, rect.y, rect.w, rect.h };
+		}
+
 	public:
 		SDL_Renderer_Wrapper(SDL_Renderer* renderer);
 		~SDL_Renderer_Wrapper();

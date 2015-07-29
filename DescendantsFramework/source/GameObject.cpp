@@ -10,18 +10,18 @@ GameObject::GameObject::GameObject(std::string textureName, SDL_Rect* source, SD
 {
 	if (source != nullptr)
 	{
-		_sourceRect.x = source->x;
-		_sourceRect.y = source->y;
-		_sourceRect.w = source->w;
-		_sourceRect.h = source->h;
+		SourceRect.x = source->x;
+		SourceRect.y = source->y;
+		SourceRect.w = source->w;
+		SourceRect.h = source->h;
 	}
 
 	if (destination != nullptr)
 	{
-		_destRect.x = destination->x;
-		_destRect.y = destination->y;
-		_destRect.w = destination->w;
-		_destRect.h = destination->h;
+		DestRect.x = destination->x;
+		DestRect.y = destination->y;
+		DestRect.w = destination->w;
+		DestRect.h = destination->h;
 	}
 
 	_textureName = textureName;

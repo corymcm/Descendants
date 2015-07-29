@@ -66,37 +66,22 @@ namespace GameObject
 			ar & _textureName;
 			ar & _soundDictionary;
 
-			ar & _sourceRect;
-			ar & _destRect;
+			ar & SourceRect;
+			ar & DestRect;
 		}
-
-	protected:
-		Rect _destRect;
-		Rect _sourceRect;
 
 		std::unordered_map<EGameObjectState, std::string> _soundDictionary;
 
 	public:
+		Rect DestRect;
+		Rect SourceRect;
+
 		DESCENDANT_EXPORT GameObject(std::string textureName, SDL_Rect* source, SDL_Rect* destination);
 		DESCENDANT_EXPORT GameObject();
 
 		virtual DESCENDANT_EXPORT ~GameObject();
 
 		inline std::string GetTextureName() const { return _textureName; }
-
-		inline SDL_Rect* GetDestination()
-		{
-			if (_destRect.IsEmpty())
-				return nullptr;
-			return new SDL_Rect{ _destRect.x, _destRect.y, _destRect.w, _destRect.h };
-		};
-
-		inline SDL_Rect* GetSource()
-		{
-			if (_sourceRect.IsEmpty())
-				return nullptr;
-			return new SDL_Rect{ _sourceRect.x, _sourceRect.y, _sourceRect.w, _sourceRect.h };
-		};
 
 		inline std::string GetSound(EGameObjectState eState)
 		{

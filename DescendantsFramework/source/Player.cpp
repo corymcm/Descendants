@@ -28,16 +28,16 @@ void GameObject::Player::Update(SDL_Event* e)
 		switch (e->key.keysym.sym)
 		{
 			case SDLK_w:
-				_destRect.y -= 1;
+				DestRect.y -= 1;
 				break;
 			case SDLK_s:
-				_destRect.y += 1;
+				DestRect.y += 1;
 				break;
 			case SDLK_a:
-				_destRect.x -= 1;
+				DestRect.x -= 1;
 				break;
 			case SDLK_d:
-				_destRect.x += 1;
+				DestRect.x += 1;
 				break;
 			default:
 				break;
