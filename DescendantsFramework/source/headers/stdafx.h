@@ -1,5 +1,4 @@
 #include <iostream>
-#include <SDL.h>
 
 #ifdef _MSC_VER
 	#define DEBUG_BREAK __debugbreak()
@@ -8,10 +7,10 @@
 #endif
 
 // Logs a message to the console window
-#define LogError(message) std::cout << message << SDL_GetError() << std::endl;
+#define LogError(message) std::cout << message << std::endl;
 
 // Logs an error with additional information.
-#define LogErrorAdditional(message, args) std::cout << message << args << SDL_GetError() << std::endl;
+#define LogErrorAdditional(message, args) std::cout << message << args  << std::endl;
 
 #define DESCENDANT_UNUSED(x) (void)(x)
 

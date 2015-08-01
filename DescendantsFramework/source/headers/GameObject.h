@@ -89,7 +89,7 @@ namespace GameObject
 			return search != _soundDictionary.end() ? search->second : nullptr;
 		}
 
-		virtual void DESCENDANT_EXPORT Update(SDL_Event* e);
+		virtual void DESCENDANT_EXPORT Update();
 	};
 }
 

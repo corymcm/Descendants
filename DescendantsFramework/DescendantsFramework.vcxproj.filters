@@ -27,7 +27,10 @@
     <ClInclude Include="source\headers\stdafx.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="source\headers\IRenderer.h">
+    <ClInclude Include="source\headers\IPlayerController.h">
+      <Filter>Headers</Filter>
+    </ClInclude> 
+   <ClInclude Include="source\headers\IRenderer.h">
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="source\headers\ISoundManager.h">

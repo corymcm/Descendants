@@ -24,6 +24,9 @@
     <ClInclude Include="source\headers\SDL_TextureManager.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="source\headers\SDL_PlayerController.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
     <ClInclude Include="source\headers\SDL_SoundManager.h">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -40,6 +43,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="source\SDL_TextureManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SDL_PlayerController.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="source\SDL_SoundManager.cpp">

@@ -30,7 +30,7 @@ namespace GameObject
 
 		DESCENDANT_EXPORT virtual ~Pawn();
 
-		DESCENDANT_EXPORT virtual void Update(SDL_Event* e);
+		DESCENDANT_EXPORT virtual void Update();
 	};
 }
 

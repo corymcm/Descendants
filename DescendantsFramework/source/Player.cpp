@@ -4,14 +4,16 @@
 #include <boost/serialization/export.hpp>
 BOOST_CLASS_EXPORT_GUID(GameObject::Player, "Player");
 
-GameObject::Player::Player(std::string texturePath, Rect* position, Rect* destination)
-	: GameObject(texturePath, position, destination)
+GameObject::Player::Player(std::string texturePath, Rect* position, Rect* destination, std::string controllerName)
+	: GameObject(texturePath, position, destination),
+	_playerController(nullptr)
 {
-
+	ControllerName = controllerName;
 }
 
 GameObject::Player::Player()
-	:GameObject()
+	:GameObject(),
+	_playerController(nullptr)
 {
 
 }
@@ -21,26 +23,11 @@ GameObject::Player::~Player()
 
 }
 
-void GameObject::Player::Update(SDL_Event* e)
+void GameObject::Player::Update()
 {
-	if (e->type == SDL_KEYDOWN)
+	if (_playerController == nullptr)
 	{
-		switch (e->key.keysym.sym)
-		{
-			case SDLK_w:
-				DestRect.y -= 1;
-				break;
-			case SDLK_s:
-				DestRect.y += 1;
-				break;
-			case SDLK_a:
-				DestRect.x -= 1;
-				break;
-			case SDLK_d:
-				DestRect.x += 1;
-				break;
-			default:
-				break;
-		}
+		return;
 	}
+	_playerController->UpdateController(this);
 }

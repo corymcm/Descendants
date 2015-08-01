@@ -8,6 +8,7 @@
 #include "GameObject.h"
 #include "IRenderer.h"
 #include "ISoundManager.h"
+#include "IPlayerController.h"
 
 // include headers that implement a archive in simple text format
 #include <Boost/archive/text_oarchive.hpp>
@@ -46,7 +47,8 @@ namespace World
 		inline void SetTexturePath(std::string path) { _texturePath = path; }
 		inline void SetBackgroundMusic(std::string sound) { _backgroundMusic = sound; }
 
-		DESCENDANT_EXPORT void Update(SDL_Event* e, Framework::ISoundManager* soundManager);
+		DESCENDANT_EXPORT void Update(Framework::ISoundManager* soundManager);
+		DESCENDANT_EXPORT void SetPlayerControllers(std::unordered_map<std::string, Framework::IPlayerController*> playercontrollers);
 		DESCENDANT_EXPORT void Render(Framework::IRenderer* renderer);
 		DESCENDANT_EXPORT void AddObject(GameObject::GameObject* object);
 		DESCENDANT_EXPORT void RemoveObject(GameObject::GameObject* object);

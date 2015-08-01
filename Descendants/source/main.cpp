@@ -1,19 +1,22 @@
 #include "stdafx.h"
 
+#include <fstream>
+#include <unordered_map> 
+
 #include "main.h"
 #include "WindowManager.h"
-#include "GameObject.h"
+#include "World.h"
 #include "Pawn.h"
 #include "Player.h"
-#include "World.h"
 #include "WorldManager.h"
 #include "SDL_SoundManager.h"
-#include <fstream>
+#include "SDL_PlayerController.h"
 
 // TODO : Wrap this in a game object
 // global objects are ugly, same with the g_ prefix...
 WindowManger::WindowManger* g_windowManager;
 WorldManager::WorldManager* g_worldManager;
+std::unordered_map<std::string, Framework::IPlayerController*> g_playerControllers;
 
 ///-------------------------------------------------
 /// Initialize main gameobject and windowmangers.
@@ -31,6 +34,10 @@ bool InitializeGameObject()
 
 	g_windowManager = new WindowManger::WindowManger("You son of a bitch!", 100, 100, 640, 480);
 	SoundManager::SDL_SoundManager* soundManager = new SoundManager::SDL_SoundManager(dataFolder + std::string("Sounds\\"));
+	g_playerControllers = std::unordered_map<std::string, Framework::IPlayerController*>();
+
+	Framework::IPlayerController* pc = new Controllers::SDL_PlayerController();
+	g_playerControllers["keyboard"] = pc;
 
 	//GameObject::Rect* dilion_position = new GameObject::Rect{ 200, 200, 64, 64 };
 	//GameObject::Rect* dutch_position = new GameObject::Rect{ 50, 200, 64, 64 };
@@ -40,7 +47,7 @@ bool InitializeGameObject()
 
 	//GameObject::GameObject* Background = new GameObject::GameObject("background.bmp", NULL, NULL);
 	//GameObject::GameObject* dilionPawn = new GameObject::Pawn("dilion.bmp", NULL, dilion_position);
-	//GameObject::GameObject* dutchPlayer = new GameObject::Player("dutch.bmp", NULL, dutch_position);
+	//GameObject::GameObject* dutchPlayer = new GameObject::Player("dutch.bmp", NULL, dutch_position, "keyboard");
 
 	//test->AddObject(Background);
 	//test->AddObject(dilionPawn);
@@ -51,6 +58,7 @@ bool InitializeGameObject()
 
 	g_worldManager = new WorldManager::WorldManager(dataFolder, soundManager);
 	g_worldManager->LoadWorld("TestWorld.nan");
+	g_worldManager->SetWorldControllers(g_playerControllers);
 
 	//Serialization test
 	//std::ofstream ofs("filename.nan");
@@ -97,12 +105,17 @@ void PollEvents()
 	{
 		while (SDL_PollEvent(&e))
 		{
+			for (const auto& pc : g_playerControllers)
+			{
+				pc.second->AddEvents(&e);
+			}
+
 			if (e.type == SDL_QUIT || (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE))
 			{
 				quit = true;
 			}
 			g_windowManager->Update(&e);
-			g_worldManager->UpdateWorld(&e);
+			g_worldManager->UpdateWorld();
 		}
 		g_worldManager->RenderWorld(g_windowManager->GetRenderer());
 		g_windowManager->Render();

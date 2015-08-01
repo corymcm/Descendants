@@ -203,6 +203,7 @@ copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\libogg-0.dll $(OutDir)</Comm
     <ClCompile Include="source\SDL_Renderer_Wrapper.cpp" />
     <ClCompile Include="source\SDL_SoundManager.cpp" />
     <ClCompile Include="source\SDL_TextureManager.cpp" />
+    <ClCompile Include="source\SDL_PlayerController.cpp" />
     <ClCompile Include="source\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
@@ -216,6 +217,7 @@ copy $(ProjectDir)..\External\SDL_Mixer\$(Platform)\libogg-0.dll $(OutDir)</Comm
     <ClInclude Include="source\headers\SDL_Renderer_Wrapper.h" />
     <ClInclude Include="source\headers\SDL_SoundManager.h" />
     <ClInclude Include="source\headers\SDL_TextureManager.h" />
+    <ClInclude Include="source\headers\SDL_PlayerController.h" />
     <ClInclude Include="source\headers\stdafx.h" />
     <ClInclude Include="source\headers\WindowManager.h" />
   </ItemGroup>

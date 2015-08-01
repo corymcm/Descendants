@@ -24,9 +24,9 @@ WorldManager::WorldManager::~WorldManager()
 	delete _soundManager;
 }
 
-void WorldManager::WorldManager::UpdateWorld(SDL_Event* e)
+void WorldManager::WorldManager::UpdateWorld()
 {
-	_curretWorld->Update(e, _soundManager);
+	_curretWorld->Update(_soundManager);
 }
 
 void WorldManager::WorldManager::RenderWorld(Framework::IRenderer* renderer)

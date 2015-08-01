@@ -21,8 +21,8 @@ GameObject::Pawn::~Pawn()
 
 }
 
-void GameObject::Pawn::Update(SDL_Event* e)
+void GameObject::Pawn::Update()
 {
-	DESCENDANT_UNUSED(e);
+
 }
 

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "World.h"
+#include "Player.h"
 
 #include <boost/serialization/export.hpp>
 BOOST_CLASS_EXPORT_GUID(World::World, "World");
@@ -20,7 +21,7 @@ World::World::~World()
 	while (!_objects.empty()) delete _objects.back(), _objects.pop_back();
 }
 
-void World::World::Update(SDL_Event* e, Framework::ISoundManager* soundManager)
+void World::World::Update(Framework::ISoundManager* soundManager)
 {
 	if (soundManager->GetCurrentMusic() != _backgroundMusic)
 	{
@@ -29,7 +30,7 @@ void World::World::Update(SDL_Event* e, Framework::ISoundManager* soundManager)
 
 	for (auto object : _objects)
 	{
-		object->Update(e);
+		object->Update();
 	}
 }
 
@@ -50,3 +51,19 @@ void World::World::RemoveObject(GameObject::GameObject* object)
 {
 	DESCENDANT_UNUSED(object);
 }
+
+void World::World::SetPlayerControllers(std::unordered_map<std::string, Framework::IPlayerController*> playercontrollers)
+{
+	for (auto object : _objects)
+	{
+		GameObject::Player* player = dynamic_cast<GameObject::Player*>(object);
+		if (player == nullptr)
+			continue;
+		auto search = playercontrollers.find(player->ControllerName);
+		if (search != playercontrollers.end())
+		{
+			player->SetPlayerController(search->second);
+		}
+	}
+}
+

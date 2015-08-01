@@ -31,7 +31,6 @@ GameObject::GameObject::~GameObject()
 {
 }
 
-void GameObject::GameObject::Update(SDL_Event* e)
+void GameObject::GameObject::Update()
 {
-	DESCENDANT_UNUSED(e);
 }
