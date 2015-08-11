@@ -16,7 +16,7 @@
 // global objects are ugly, same with the g_ prefix...
 WindowManger::WindowManger* g_windowManager;
 WorldManager::WorldManager* g_worldManager;
-std::unordered_map<std::string, Framework::IPlayerController*> g_playerControllers;
+std::unordered_map<std::string, Controllers::SDL_PlayerController*> g_playerControllers;
 
 ///-------------------------------------------------
 /// Initialize main gameobject and windowmangers.
@@ -34,9 +34,9 @@ bool InitializeGameObject()
 
 	g_windowManager = new WindowManger::WindowManger("You son of a bitch!", 100, 100, 640, 480);
 	SoundManager::SDL_SoundManager* soundManager = new SoundManager::SDL_SoundManager(dataFolder + std::string("Sounds\\"));
-	g_playerControllers = std::unordered_map<std::string, Framework::IPlayerController*>();
+	g_playerControllers = std::unordered_map<std::string, Controllers::SDL_PlayerController*>();
 
-	Framework::IPlayerController* pc = new Controllers::SDL_PlayerController();
+	Controllers::SDL_PlayerController* pc = new Controllers::SDL_PlayerController();
 	g_playerControllers["keyboard"] = pc;
 
 	//GameObject::Rect* dilion_position = new GameObject::Rect{ 200, 200, 64, 64 };
@@ -107,7 +107,7 @@ void PollEvents()
 		{
 			for (const auto& pc : g_playerControllers)
 			{
-				pc.second->AddEvents(&e);
+				pc.second->AddEvent(&e);
 			}
 
 			if (e.type == SDL_QUIT || (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE))

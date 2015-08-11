@@ -51,19 +51,3 @@ void World::World::RemoveObject(GameObject::GameObject* object)
 {
 	DESCENDANT_UNUSED(object);
 }
-
-void World::World::SetPlayerControllers(std::unordered_map<std::string, Framework::IPlayerController*> playercontrollers)
-{
-	for (auto object : _objects)
-	{
-		GameObject::Player* player = dynamic_cast<GameObject::Player*>(object);
-		if (player == nullptr)
-			continue;
-		auto search = playercontrollers.find(player->ControllerName);
-		if (search != playercontrollers.end())
-		{
-			player->SetPlayerController(search->second);
-		}
-	}
-}
-

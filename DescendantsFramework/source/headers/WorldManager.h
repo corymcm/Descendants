@@ -33,7 +33,8 @@ namespace WorldManager
 		DESCENDANT_EXPORT void LoadWorld(std::string worldName);
 		DESCENDANT_EXPORT void SaveWorld();
 
-		inline void SetWorldControllers(std::unordered_map<std::string, Framework::IPlayerController*> playercontrollers)
+		template <class T>
+		inline void SetWorldControllers(std::unordered_map<std::string, T*> playercontrollers)
 		{
 			if (_curretWorld)
 			{

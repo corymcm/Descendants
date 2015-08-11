@@ -23,10 +23,14 @@ namespace Controllers
 			return _name;
 		}
 
-		inline void AddEvents(void* event) override
+		inline void AddEvent(SDL_Event* event)
 		{
-			SDL_Event* sdlEvent = static_cast<SDL_Event*>(event);
-			_eventQueue.push_back(sdlEvent);
+			_eventQueue.push_back(event);
+		}
+
+		inline void ClearEvents()
+		{
+			_eventQueue.clear();
 		}
 
 	private:

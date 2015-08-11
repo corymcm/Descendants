@@ -48,10 +48,26 @@ namespace World
 		inline void SetBackgroundMusic(std::string sound) { _backgroundMusic = sound; }
 
 		DESCENDANT_EXPORT void Update(Framework::ISoundManager* soundManager);
-		DESCENDANT_EXPORT void SetPlayerControllers(std::unordered_map<std::string, Framework::IPlayerController*> playercontrollers);
 		DESCENDANT_EXPORT void Render(Framework::IRenderer* renderer);
 		DESCENDANT_EXPORT void AddObject(GameObject::GameObject* object);
 		DESCENDANT_EXPORT void RemoveObject(GameObject::GameObject* object);
+
+		template <class T>
+		void SetPlayerControllers(std::unordered_map<std::string, T*> playercontrollers)
+		{
+			for (auto object : _objects)
+			{
+				GameObject::Player* player = dynamic_cast<GameObject::Player*>(object);
+				if (player == nullptr)
+					continue;
+				auto search = playercontrollers.find(player->ControllerName);
+				if (search != playercontrollers.end())
+				{
+					player->SetPlayerController(search->second);
+				}
+			}
+		}
+
 	};
 }
 
