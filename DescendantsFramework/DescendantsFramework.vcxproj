@@ -170,6 +170,8 @@
     <ClCompile Include="source\World.cpp" />
     <ClCompile Include="source\WorldManager.cpp" />
     <ClCompile Include="source\Player.cpp" />
+    <ClCompile Include="source\PlayerSpawner.cpp" />
+    <ClCompile Include="source\PawnSpawner.cpp" />
     <ClCompile Include="source\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
@@ -185,6 +187,9 @@
     <ClInclude Include="source\headers\Pawn.h" />
     <ClInclude Include="source\headers\IRenderer.h" />
     <ClInclude Include="source\headers\IPlayerController.h" />
+    <ClInclude Include="source\headers\ISpawner.h" />
+    <ClInclude Include="source\headers\PlayerSpawner.h" />
+    <ClInclude Include="source\headers\PawnSpawner.h" />
     <ClInclude Include="source\headers\WorldManager.h" />
     <ClInclude Include="source\headers\World.h" />
     <ClInclude Include="source\headers\Player.h" />

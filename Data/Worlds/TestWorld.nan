@@ -1,7 +1,12 @@
 22 serialization::archive 12 0 1 0
-0 13 TestWorld.nan 27 VietnamJungleThemeRambo.ogg 0 0 3 0 2 1 0
-1 14 background.bmp 0 0 0 8 0 0 0 0 0 0 0 0 0 0 0 5 4 Pawn 1 0
-2
-3 10 dilion.bmp 0 8 0 0 0 0 0 200 200 64 64 6 6 Player 1 0
+0 13 TestWorld.nan 27 VietnamJungleThemeRambo.ogg 0 0 2 0 2 1 0
+1 1 0
+2 0 0 0 0
+3 0 0 0 0 14 background.bmp 0 0 0 8 0 5 4 Pawn 1 0
 4
-5 9 dutch.bmp 0 8 0 0 0 0 0 50 200 64 64 8 keyboard
+5 200 200 64 64
+6 0 0 0 0 10 dilion.bmp
+7 0 8 0 0 0 1 0 7 13 PlayerSpawner 1 0
+8 3
+9 50 200 64 64 -1 9 dutch.bmp 8 keyboard 5 1 0
+10 0

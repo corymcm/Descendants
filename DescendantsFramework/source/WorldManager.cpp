@@ -11,7 +11,7 @@ WorldManager::WorldManager::WorldManager(std::string resourcePath, Framework::IS
 	_soundManager = soundManager;
 }
 
-WorldManager::WorldManager::WorldManager(std::string resourcePath, Framework::ISoundManager* soundManager, World::World* world)
+WorldManager::WorldManager::WorldManager(std::string resourcePath, Framework::ISoundManager* soundManager, Framework::World* world)
 	: WorldManager::WorldManager(resourcePath, soundManager)
 {
 	_curretWorld = world;

@@ -41,7 +41,7 @@ void WindowManger::WindowManger::Render()
 		SDL_Delay(minFrameTime - (SDL_GetTicks() - frametime));
 }
 
-void WindowManger::WindowManger::AddGameObject(GameObject::GameObject* gameObject)
+void WindowManger::WindowManger::AddGameObject(Framework::GameObject* gameObject)
 {
 	_objects.push_back(gameObject);
 }

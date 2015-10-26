@@ -8,6 +8,7 @@
 #include "World.h"
 #include "Pawn.h"
 #include "Player.h"
+#include "PlayerSpawner.h"
 #include "WorldManager.h"
 #include "SDL_SoundManager.h"
 #include "SDL_PlayerController.h"
@@ -39,47 +40,49 @@ bool InitializeGameObject()
 	Controllers::SDL_PlayerController* pc = new Controllers::SDL_PlayerController();
 	g_playerControllers["keyboard"] = pc;
 
-	//GameObject::Rect* dilion_position = new GameObject::Rect{ 200, 200, 64, 64 };
-	//GameObject::Rect* dutch_position = new GameObject::Rect{ 50, 200, 64, 64 };
-
-	//World::World* test = new World::World("TestWorld.nan");
-	//test->SetBackgroundMusic("VietnamJungleThemeRambo.ogg");
-
-	//GameObject::GameObject* Background = new GameObject::GameObject("background.bmp", NULL, NULL);
-	//GameObject::GameObject* dilionPawn = new GameObject::Pawn("dilion.bmp", NULL, dilion_position);
-	//GameObject::GameObject* dutchPlayer = new GameObject::Player("dutch.bmp", NULL, dutch_position, "keyboard");
-
-	//test->AddObject(Background);
-	//test->AddObject(dilionPawn);
-	//test->AddObject(dutchPlayer);
-
-	//WorldManager::WorldManager* worldManager = new WorldManager::WorldManager(dataFolder, soundManager, test);
-	//worldManager->SaveWorld();
+// 	Framework::Rect* dilion_position = new Framework::Rect{ 200, 200, 64, 64 };
+// 	Framework::Rect* dutch_position = new Framework::Rect{ 50, 200, 64, 64 };
+// 
+// 	Framework::ISpawner* player_spawner = new Framework::PlayerSpawner("dutch.bmp", "keyboard", NULL, dutch_position, 5);
+// 
+// 	Framework::World* test = new Framework::World("TestWorld.nan");
+// 	test->SetBackgroundMusic("VietnamJungleThemeRambo.ogg");
+// 
+// 	Framework::GameObject* Background = new Framework::GameObject("background.bmp", NULL, NULL);
+// 	Framework::GameObject* dilionPawn = new Framework::Pawn("dilion.bmp", NULL, dilion_position);
+// 	//Framework::GameObject* dutchPlayer = new Framework::Player("dutch.bmp", NULL, dutch_position, "keyboard", 5);
+// 
+// 	test->AddObject(Background);
+// 	test->AddObject(dilionPawn);
+// 	test->AddSpawner(player_spawner);
+// 
+// 	WorldManager::WorldManager* worldManager = new WorldManager::WorldManager(dataFolder, soundManager, test);
+// 	worldManager->SaveWorld();
 
 	g_worldManager = new WorldManager::WorldManager(dataFolder, soundManager);
 	g_worldManager->LoadWorld("TestWorld.nan");
 	g_worldManager->SetWorldControllers(g_playerControllers);
 
 	//Serialization test
-	//std::ofstream ofs("filename.nan");
-	//{
-	//	boost::archive::text_oarchive oa(ofs);
-	//	oa << dilionPawn;
-	//}
-	//
-	//delete dilionPawn;
-	//dilionPawn = NULL;
+// 	std::ofstream ofs("filename.nan");
+// 	{
+// 		boost::archive::text_oarchive oa(ofs);
+// 		oa << dilionPawn;
+// 	}
+// 
+// 	delete dilionPawn;
+// 	dilionPawn = NULL;
+// 
+// 	dilionPawn = new Framework::Pawn();
+// 	{
+// 		std::ifstream ifs("filename.nan");
+// 		boost::archive::text_iarchive ia(ifs);
+// 		ia & dilionPawn;
+// 	}
 
-	//dilionPawn = new GameObject::Pawn();
-	//{
-	//	std::ifstream ifs("filename.nan");
-	//	boost::archive::text_iarchive ia(ifs);
-	//	ia & dilionPawn;
-	//}
-
-	//g_windowManager->AddGameObject(Background);
-	//g_windowManager->AddGameObject(dilionPawn);
-	//g_windowManager->AddGameObject(dutchPlayer);
+// 	g_windowManager->AddGameObject(Background);
+// 	g_windowManager->AddGameObject(dilionPawn);
+// 	g_windowManager->AddGameObject(dutchPlayer);
 
 	return true;
 }

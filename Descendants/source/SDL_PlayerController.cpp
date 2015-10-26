@@ -12,7 +12,7 @@ Controllers::SDL_PlayerController::~SDL_PlayerController()
 
 }
 
-void Controllers::SDL_PlayerController::UpdateController(GameObject::GameObject* object)
+void Controllers::SDL_PlayerController::UpdateController(Framework::GameObject* object)
 {
 	for (const auto &e : _eventQueue)
 	{

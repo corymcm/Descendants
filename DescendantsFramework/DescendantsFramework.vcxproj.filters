@@ -36,6 +36,15 @@
     <ClInclude Include="source\headers\ISoundManager.h">
       <Filter>Headers</Filter>
     </ClInclude>
+	<ClInclude Include="source\headers\ISpawner.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+	<ClInclude Include="source\headers\PlayerSpawner.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+	<ClInclude Include="source\headers\PawnSpawner.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\stdafx.cpp">
@@ -54,6 +63,12 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="source\GameObject.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+	<ClCompile Include="source\PawnSpawner.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+	<ClCompile Include="source\PlayerSpawner.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

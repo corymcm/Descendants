@@ -2,27 +2,20 @@
 #include "Pawn.h"
 
 #include <boost/serialization/export.hpp>
-BOOST_CLASS_EXPORT_GUID(GameObject::Pawn, "Pawn");
+BOOST_CLASS_EXPORT_GUID(Framework::Pawn, "Pawn");
 
-GameObject::Pawn::Pawn(std::string texturePath, Rect* position, Rect* destination)
-	: GameObject(texturePath, position, destination)
+Framework::Pawn::Pawn(std::string texturePath, Rect* source, Rect* destination)
+	: GameObject(texturePath, source, destination)
 {
 
 }
 
-GameObject::Pawn::Pawn()
-	: GameObject()
+Framework::Pawn::~Pawn()
 {
 
 }
 
-GameObject::Pawn::~Pawn()
+void Framework::Pawn::Update()
 {
 
 }
-
-void GameObject::Pawn::Update()
-{
-
-}
-

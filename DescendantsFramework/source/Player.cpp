@@ -2,28 +2,23 @@
 #include "Player.h"
 
 #include <boost/serialization/export.hpp>
-BOOST_CLASS_EXPORT_GUID(GameObject::Player, "Player");
+BOOST_CLASS_EXPORT_GUID(Framework::Player, "Player");
 
-GameObject::Player::Player(std::string texturePath, Rect* position, Rect* destination, std::string controllerName)
-	: GameObject(texturePath, position, destination),
-	_playerController(nullptr)
-{
-	ControllerName = controllerName;
-}
-
-GameObject::Player::Player()
-	:GameObject(),
-	_playerController(nullptr)
+Framework::Player::Player(std::string texturePath, Rect* source, Rect* destination, std::string controllerName, int lives)
+	: GameObject(texturePath, source, destination),
+	_playerController(nullptr),
+	_lives(lives),
+	ControllerName(controllerName)
 {
 
 }
 
-GameObject::Player::~Player()
+Framework::Player::~Player()
 {
 
 }
 
-void GameObject::Player::Update()
+void Framework::Player::Update()
 {
 	if (_playerController == nullptr)
 	{

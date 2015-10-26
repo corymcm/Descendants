@@ -11,9 +11,10 @@ namespace Framework
 	{
 	public:
 		virtual ~IRenderer() {};
-		virtual void Render(GameObject::GameObject* obj, std::string texturePath) = 0;
-		virtual void RenderPresent() = 0;
-		virtual void ClearRenderer() = 0;
+
+		virtual void Render(Framework::GameObject* obj, std::string texturePath)	= 0;
+		virtual void RenderPresent()												= 0;
+		virtual void ClearRenderer()												= 0;
 	};
 }
 

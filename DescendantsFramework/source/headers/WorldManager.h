@@ -9,23 +9,15 @@
 #include "World.h"
 #include "IRenderer.h"
 #include "ISoundManager.h"
-#include "IPlayerController.h"
 
 namespace WorldManager
 {
 	class WorldManager
 	{
-	private:
-		Framework::ISoundManager* _soundManager;
-		World::World* _curretWorld;
-		std::string _worldPath;
-		std::string _texturePath;
-
 	public:
-		DESCENDANT_EXPORT inline World::World* GetCurrentWorld() { return _curretWorld; }
 
 		DESCENDANT_EXPORT WorldManager(std::string resourcePath, Framework::ISoundManager* soundManager);
-		DESCENDANT_EXPORT WorldManager(std::string resourcePath, Framework::ISoundManager* soundManager, World::World* world);
+		DESCENDANT_EXPORT WorldManager(std::string resourcePath, Framework::ISoundManager* soundManager, Framework::World* world);
 		DESCENDANT_EXPORT ~WorldManager();
 
 		DESCENDANT_EXPORT void UpdateWorld();
@@ -33,14 +25,21 @@ namespace WorldManager
 		DESCENDANT_EXPORT void LoadWorld(std::string worldName);
 		DESCENDANT_EXPORT void SaveWorld();
 
-		template <class T>
-		inline void SetWorldControllers(std::unordered_map<std::string, T*> playercontrollers)
+		DESCENDANT_EXPORT inline Framework::World* GetCurrentWorld() { return _curretWorld; }
+
+		template <class T> inline void SetWorldControllers(std::unordered_map<std::string, T*> playercontrollers)
 		{
 			if (_curretWorld)
 			{
 				_curretWorld->SetPlayerControllers(playercontrollers);
 			}
 		}
+
+	private:
+		Framework::ISoundManager*	_soundManager;
+		Framework::World*			_curretWorld;
+		std::string					_worldPath;
+		std::string					_texturePath;
 	};
 }
 

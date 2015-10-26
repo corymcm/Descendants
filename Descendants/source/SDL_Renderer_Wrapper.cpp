@@ -14,7 +14,7 @@ Renderers::SDL_Renderer_Wrapper::~SDL_Renderer_Wrapper()
 	delete _textureManager;
 }
 
-void Renderers::SDL_Renderer_Wrapper::Render(GameObject::GameObject* obj, std::string texturePath)
+void Renderers::SDL_Renderer_Wrapper::Render(Framework::GameObject* obj, std::string texturePath)
 {
 	if (_textureManager == nullptr)
 		_textureManager = new TextureManager::SDL_TextureManager(texturePath);

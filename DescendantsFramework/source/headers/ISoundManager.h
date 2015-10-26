@@ -9,11 +9,12 @@ namespace Framework
 	{
 	public:
 		virtual ~ISoundManager() {};
-		virtual void PlayEffect(std::string sound) = 0;
-		virtual void PlayMusic(std::string sound) = 0;
-		virtual void PauseMusic() = 0;
-		virtual void StopMusic() = 0;
-		virtual std::string GetCurrentMusic() = 0;
+
+		virtual void		PlayEffect(std::string sound)	= 0;
+		virtual void		PlayMusic(std::string sound)	= 0;
+		virtual void		PauseMusic()					= 0;
+		virtual void		StopMusic()						= 0;
+		virtual std::string GetCurrentMusic()				= 0;
 	};
 }
 

@@ -6,7 +6,6 @@
 #include <SDL.h>
 
 #include "IPlayerController.h"
-#include "GameObject.h"
 #include <vector>
 
 namespace Controllers
@@ -17,7 +16,7 @@ namespace Controllers
 		SDL_PlayerController();
 		~SDL_PlayerController();
 
-		virtual void UpdateController(GameObject::GameObject* object) override;
+		virtual void UpdateController(Framework::GameObject* object) override;
 		virtual std::string GetName() override
 		{
 			return _name;

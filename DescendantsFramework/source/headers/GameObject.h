@@ -8,16 +8,33 @@
 // include headers that implement a archive in simple text format
 #include <Boost/archive/text_oarchive.hpp>
 #include <Boost/archive/text_iarchive.hpp>
+
+// Need to forward declare our class and serialization functions so boost can have access to our member variables.
+namespace Framework
+{
+	class GameObject;
+}
+
+namespace boost
+{
+	namespace serialization
+	{
+		template<class Archive> void save_construct_data(Archive& ar, const Framework::GameObject* t, const unsigned int version);
+		template<class Archive> void load_construct_data(Archive& ar, Framework::GameObject* t, const unsigned int version);
+	}
+}
+
 #include <boost/serialization/unordered_map.hpp>
 
-namespace GameObject
+
+namespace Framework
 {
 	enum class EGameObjectState : unsigned int
 	{
-		Alive,
-		Dead,
-		Moving,
-		Collided,
+		ALIVE,
+		DEAD,
+		MOVING,
+		COLLIED,
 		USED,
 		USING,
 		FIRING
@@ -25,8 +42,6 @@ namespace GameObject
 
 	class Rect
 	{
-		friend class boost::serialization::access;
-
 	public:
 		int x;
 		int y;
@@ -39,8 +54,8 @@ namespace GameObject
 		}
 
 	private:
-		template<class Archive>
-		inline void serialize(Archive & ar, const unsigned int version)
+		friend class boost::serialization::access;
+		template<class Archive> inline void serialize(Archive & ar, const unsigned int version)
 		{
 			DESCENDANT_UNUSED(version);
 
@@ -53,33 +68,17 @@ namespace GameObject
 
 	class GameObject
 	{
-		friend class boost::serialization::access;
-
-	private:
-		std::string _textureName;
-
-		template<class Archive>
-		inline void serialize(Archive & ar, const unsigned int version)
-		{
-			DESCENDANT_UNUSED(version);
-
-			ar & _textureName;
-			ar & _soundDictionary;
-
-			ar & SourceRect;
-			ar & DestRect;
-		}
-
-		std::unordered_map<EGameObjectState, std::string> _soundDictionary;
-
 	public:
-		Rect DestRect;
-		Rect SourceRect;
-
 		DESCENDANT_EXPORT GameObject(std::string textureName, Rect* source, Rect* destination);
-		DESCENDANT_EXPORT GameObject();
 
 		virtual DESCENDANT_EXPORT ~GameObject();
+
+		Rect DestRect;
+		Rect SourceRect;
+		EGameObjectState _currentState;
+
+		virtual void		DESCENDANT_EXPORT Update();
+		virtual inline void DESCENDANT_EXPORT Reset() { _currentState = EGameObjectState::ALIVE; }
 
 		inline std::string GetTextureName() const { return _textureName; }
 
@@ -89,8 +88,53 @@ namespace GameObject
 			return search != _soundDictionary.end() ? search->second : nullptr;
 		}
 
-		virtual void DESCENDANT_EXPORT Update();
+		inline EGameObjectState GetCurrentState()
+		{
+			return _currentState;
+		}
+
+	private:
+		std::string _textureName;
+		std::unordered_map<EGameObjectState, std::string> _soundDictionary;
+
+		friend class boost::serialization::access;
+		template<class Archive> inline void serialize(Archive & ar, const unsigned int version)
+		{
+			DESCENDANT_UNUSED(version);
+
+			ar & _soundDictionary;
+		}
+
+		template<class Archive> friend void boost::serialization::save_construct_data(Archive& ar, const GameObject* t, const unsigned int version);
+		template<class Archive> friend void boost::serialization::load_construct_data(Archive& ar, GameObject* t, const unsigned int version);
 	};
+}
+
+template<class Archive> inline void boost::serialization::save_construct_data(Archive& ar, const Framework::GameObject* t, const unsigned int version)
+{
+	DESCENDANT_UNUSED(version);
+
+	// save data required to construct instance
+	ar << t->DestRect;
+	ar << t->SourceRect;
+	ar << t->_textureName;
+}
+
+template<class Archive> inline void boost::serialization::load_construct_data(Archive& ar, Framework::GameObject* t, const unsigned int version)
+{
+	DESCENDANT_UNUSED(version);
+
+	// retrieve data from archive required to construct new instance
+	std::string textureName;
+	Framework::Rect src;
+	Framework::Rect dest;
+
+	ar >> dest;
+	ar >> src;
+	ar >> textureName;
+
+	// invoke in place constructor to initialize instance of GameObject
+	::new(t)Framework::GameObject(textureName, &src, &dest);
 }
 
 #endif // GAMEOBJECT_H

@@ -3,7 +3,6 @@
 #ifndef SDL_RENDERER_WRAPPER_H
 #define SDL_RENDERER_WRAPPER_H
 
-#include "GameObject.h"
 #include "IRenderer.h"
 
 #include "SDL_TextureManager.h"
@@ -16,7 +15,7 @@ namespace Renderers
 		SDL_Renderer* _renderer;
 		TextureManager::SDL_TextureManager* _textureManager;
 
-		inline SDL_Rect* ConvertToSDL_Rect(GameObject::Rect rect)
+		inline SDL_Rect* ConvertToSDL_Rect(Framework::Rect rect)
 		{
 			if (rect.IsEmpty())
 				return nullptr;
@@ -27,7 +26,7 @@ namespace Renderers
 		SDL_Renderer_Wrapper(SDL_Renderer* renderer);
 		~SDL_Renderer_Wrapper();
 
-		void Render(GameObject::GameObject* obj, std::string texturePath) override;
+		void Render(Framework::GameObject* obj, std::string texturePath) override;
 		void ClearRenderer() override;
 		void RenderPresent() override;
 	};
